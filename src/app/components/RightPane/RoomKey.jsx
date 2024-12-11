@@ -1,4 +1,4 @@
-"use client";
+//"use client";
 
 import React from "react";
 import { useState } from "react";
@@ -51,17 +51,18 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
     //   </button>
     // </form>
     
-    <div class="relative p-4 w-full max-w-md max-h-full">
+    <div className="relative p-4 w-full max-w-md max-h-full">
         {/* <!-- Modal content --> */}
-        <div class="relative bg-gray-100 rounded-lg shadow dark:bg-gray-700">
+        <div className="relative bg-gray-100 rounded-lg shadow dark:bg-gray-700">
             {/* <!-- Modal header --> */}
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
-                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+            <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
                     Join with a Session
                 </h3>
             </div>
             {/* <!-- Modal body --> */}
-            <div class="p-4 md:p-5">
+            <div className="p-4 md:p-5">
+      <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
        <div className="mb-5">
          <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
            Enter Your Name
@@ -89,7 +90,8 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
           onChange={(e) => setQuizKey(e.target.value)} // Update state on input change
         />
       </div>
-      <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join</button>
+      </form>
+      <button type="submit" className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Join</button>
             </div>
         </div>
     </div>
