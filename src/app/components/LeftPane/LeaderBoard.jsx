@@ -11,7 +11,7 @@ const LeaderBoard = () => {
   .subscribe()
 
 
-  return <div>LeaderBoard</div>;
+  return <div><p>LeaderBoard</p></div>;
 };
 
 export default LeaderBoard;
