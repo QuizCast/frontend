@@ -4,10 +4,10 @@ import React from "react";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
   return (
-    <div className="flex flex-col max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="flex flex-col max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow">
       <a
-        className="inline-flex items-center px-3 py-2 m-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-        onClick={() => setRightComponent("BroadCast")}
+        className="inline-flex items-center px-3 py-2 m-3 text-sm cursor-pointer font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
+        onClick={() => setRightComponent("Login")}
       >
         Host
         <svg
@@ -27,7 +27,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
         </svg>
       </a>
       <a
-        className="inline-flex items-center px-3 py-2 m-3 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="inline-flex items-center px-3 py-2 m-3 text-sm cursor-pointer font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300"
         onClick={() => setRightComponent("RoomKey")}
       >
         Participant

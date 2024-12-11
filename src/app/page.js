@@ -8,6 +8,7 @@ import Join from "./components/RightPane/Join";
 import BroadCast from "./components/RightPane/BroadCast";
 import ReceiveMsg from "./components/RightPane/ReceiveMsg";
 import RoomKey from "./components/RightPane/RoomKey";
+import Questions from "./components/RightPane/Questions";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState(null);
@@ -62,6 +63,13 @@ export default function Home() {
       case "RoomKey":
         return (
           <RoomKey
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
+      case "Questions":
+        return (
+          <Questions
             setRightComponent={setRightComponent}
             setLeftComponent={setLeftComponent}
           />
