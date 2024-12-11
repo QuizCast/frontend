@@ -4,7 +4,7 @@ import React from 'react'
 
 const Questions = ({ setRightComponent, setLeftComponent }) => {
   return (
-    <div>Questions</div>
+    <div><p>Questions</p></div>
   )
 }
 
