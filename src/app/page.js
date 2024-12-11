@@ -81,27 +81,39 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen"
+      className="flex flex-col items-center justify-center h-screen bg-animated-gradien-1"
       style={{
-        backgroundImage:
-          "url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cover-photo%2Cbackground%2C-technology-design-template-d7e7283570838b88ee81709a320e562a_screen.jpg?ts=1597391993')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
     >
       {/* Large Floating Card */}
-      <div className="w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl p-4">
+      <div className="w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl ">
         <div className="flex h-full">
           {/* Left Half */}
           <div
-            className="w-2/5 h-full rounded-l-2xl flex items-center justify-center"
+            className="w-2/5 h-full rounded-2xl flex items-center justify-center "
             style={{
-              backgroundImage:
-                "url('https://png.pngtree.com/background/20210710/original/pngtree-box-blue-irregularity-technology-light-background-material-picture-image_969163.jpg')",
-              backgroundSize: "cover",
+             backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
+            
+            <div className="area" >
+            <ul className="circles">
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+            </ul>
+            </div >
+
             {renderLeftComponent()}
           </div>
 

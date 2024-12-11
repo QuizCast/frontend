@@ -99,6 +99,7 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
           </button>
         </div>
       </div>
+      </div>
   );
 }
 
