@@ -80,12 +80,28 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-animated-gradient">
+    <div
+      className="flex flex-col items-center justify-center h-screen"
+      style={{
+        backgroundImage:
+          "url('https://d1csarkz8obe9u.cloudfront.net/posterpreviews/cover-photo%2Cbackground%2C-technology-design-template-d7e7283570838b88ee81709a320e562a_screen.jpg?ts=1597391993')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
+    >
       {/* Large Floating Card */}
       <div className="w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl p-4">
         <div className="flex h-full">
           {/* Left Half */}
-          <div className="w-2/5 h-full bg-gradient-to-r from-yellow-400 to-purple-600 rounded-l-2xl flex items-center justify-center">
+          <div
+            className="w-2/5 h-full rounded-l-2xl flex items-center justify-center"
+            style={{
+              backgroundImage:
+                "url('https://png.pngtree.com/background/20210710/original/pngtree-box-blue-irregularity-technology-light-background-material-picture-image_969163.jpg')",
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
             {renderLeftComponent()}
           </div>
 
@@ -98,9 +114,9 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="w-full py-1 text-center">
-        <p className="text-gray-700 font-small">
+        <p className="text-slate-50 font-small font-bold">
           This is created by Team{" "}
-          <span className="font-bold text-indigo-500">QuizCast</span> ❤️
+          <span className="font-extrabold text-yellow-100">QuizCast</span> ❤️
         </p>
       </footer>
     </div>
