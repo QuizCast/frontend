@@ -44,7 +44,7 @@ const EnteredQuiz = ({
         },
         body: JSON.stringify({ time, questions }),
       });
-
+      
       if (response.ok) {
         alert("Quiz created successfully!");
         setRightComponent("BroadCast"); 
@@ -58,13 +58,6 @@ const EnteredQuiz = ({
 
   return (
     <div className="relative p-4 w-full max-w-2xl">
-      <a className="flex p-4">
-        <label onClick={() => setRightComponent("Qsettings")}>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
-          </svg>
-        </label>
-      </a>
       <div className="relative rounded-lg border-2 overflow-y-auto max-h-[35rem]"> {/* Make this container scrollable */}
         <h3 className="text-xl font-medium text-gray-900 mb-4">
           Create Your Quiz
@@ -107,7 +100,7 @@ const EnteredQuiz = ({
         ))}
         <button
           onClick={handleSubmit}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
+          className="text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5"
         >
           Submit Quiz
         </button>
