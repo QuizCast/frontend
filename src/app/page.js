@@ -17,7 +17,7 @@ export default function Home() {
 
   const [quizSettings, setQuizSettings] = useState({
     count: 3,
-    time: 10
+    time: 10,
   });
 
   // const [sessionStarted, setSessionStarted] = useState(false); // Track session status
@@ -103,30 +103,35 @@ export default function Home() {
             setLeftComponent={setLeftComponent}
           />
         );
-        case "Qsettings":
-          return (
-            <Qsettings
-              setRightComponent={(component, settings) => {
-                setRightComponent(component);
-                if (settings) {
-                  setQuizSettings(settings);
-                }
-              }}
-              setLeftComponent={setLeftComponent}
-            />
-          );
-          case "EnteredQuiz":
-            return (
-              <EnteredQuiz
-                count={quizSettings.count}
-                time={quizSettings.time}
-                setRightComponent={setRightComponent}
-                setLeftComponent={setLeftComponent}
-                //startSession={() => setSessionStarted(true)}
-              />
-            );
+      case "Qsettings":
+        return (
+          <Qsettings
+            setRightComponent={(component, settings) => {
+              setRightComponent(component);
+              if (settings) {
+                setQuizSettings(settings);
+              }
+            }}
+            setLeftComponent={setLeftComponent}
+          />
+        );
+      case "EnteredQuiz":
+        return (
+          <EnteredQuiz
+            count={quizSettings.count}
+            time={quizSettings.time}
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+            //startSession={() => setSessionStarted(true)}
+          />
+        );
       default:
-        return <Login />;
+        return (
+          <Login
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
     }
   };
 
@@ -134,7 +139,8 @@ export default function Home() {
     <div
       className="flex flex-col items-center justify-center h-screen"
       style={{
-        backgroundImage: "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
+        backgroundImage:
+          "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -179,7 +185,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by {" "}
+          This is created by{" "}
           <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
