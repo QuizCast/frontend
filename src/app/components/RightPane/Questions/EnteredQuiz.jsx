@@ -47,7 +47,7 @@ const EnteredQuiz = ({
 
       if (response.ok) {
         alert("Quiz created successfully!");
-        setRightComponent(null); // Reset to initial state
+        setRightComponent("BroadCast"); 
       } else {
         alert("Failed to create quiz. Please try again.");
       }
