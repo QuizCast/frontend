@@ -50,7 +50,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
     
 <>
 
-<div className="w-full max-w-sm p-4 bg-blue-50 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div className="w-full max-w-sm p-4   ">
 <div className="flex items-center justify-center">
   <img
     src="logo.png"
@@ -61,7 +61,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
 <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose your role...</h3>
   <ul className="grid w-full gap-2 md:grid-cols-1">
    <a onClick={() => setRightComponent("Login")}>
-    <li>
+    <li className="border-1">
       <input
         type="radio"
         id="hosting-small"
@@ -98,7 +98,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
     </a>
     <br></br>
     <a onClick={() => setRightComponent("RoomKey")}>
-    <li>
+    <li className="border-1">
       <input
         type="radio"
         id="hosting-big"
