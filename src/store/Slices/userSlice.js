@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    userDate: [],
+    user: null,
     Questions: [
         {
             question: "What is the capital of France?",
