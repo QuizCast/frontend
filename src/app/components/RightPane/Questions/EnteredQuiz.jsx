@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import API_CONFIG from "../../API";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setRoom } from "@/store/Slices/roomSlice";
 
 const EnteredQuiz = ({ 
   count, 
@@ -13,12 +14,13 @@ const EnteredQuiz = ({
   const [questions, setQuestions] = useState(
     Array.from({ length: count }, () => ({
       question: "",
-      options: ["", "", "", ""],
-      correct: "",
+      answers: ["", "", "", ""],
+      correct_answer: "", // Store the actual answer string
     }))
   );
 
   const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
 
   const handleQuestionChange = (index, value) => {
     const updatedQuestions = [...questions];
@@ -28,22 +30,23 @@ const EnteredQuiz = ({
 
   const handleOptionChange = (qIndex, optIndex, value) => {
     const updatedQuestions = [...questions];
-    updatedQuestions[qIndex].options[optIndex] = value;
+    updatedQuestions[qIndex].answers[optIndex] = value;
+
+    // Update the correct answer if the selected option changes
+    if (updatedQuestions[qIndex].correct_answer === updatedQuestions[qIndex].answers[optIndex]) {
+      updatedQuestions[qIndex].correct_answer = value;
+    }
+
     setQuestions(updatedQuestions);
   };
 
-  const handleCorrectAnswerChange = (qIndex, correctIndex) => {
+  const handleCorrectAnswerChange = (qIndex, optIndex) => {
     const updatedQuestions = [...questions];
-    updatedQuestions[qIndex].correct = correctIndex;
+    updatedQuestions[qIndex].correct_answer = updatedQuestions[qIndex].answers[optIndex];
     setQuestions(updatedQuestions);
   };
 
   const handleSubmit = async () => {
-    // Send the quiz data to the server
-    console.log();
-
-    console.log("Submitting quiz:",questions[0]);
-
     const END_POINT = process.env.NEXT_PUBLIC_BACKEND_URL + API_CONFIG.addQuiz;
     try {
       const response = await fetch(END_POINT, {
@@ -54,12 +57,14 @@ const EnteredQuiz = ({
         body: JSON.stringify({ 
           user_id: user['user_id'],
           time: time, 
-          questions: questions[0],
-         }),
+          questions: questions,
+        }),
       });
+
+      const responseData = await response.json();
       
       if (response.ok) {
-        alert("Quiz created successfully!");
+        dispatch(setRoom(responseData["room_key"]));
         setRightComponent("BroadCast"); 
       } else {
         alert("Failed to create quiz. Please try again.");
@@ -71,30 +76,30 @@ const EnteredQuiz = ({
 
   return (
     <div className="relative p-4 w-full max-w-2xl">
-      <div className="relative rounded-lg border-2 overflow-y-auto max-h-[35rem]"> {/* Make this container scrollable */}
+      <div className="relative rounded-lg border-2 overflow-y-auto max-h-[35rem]">
         <h3 className="text-xl font-medium text-gray-900 mb-4">
           Create Your Quiz
         </h3>
         {questions.map((q, qIndex) => (
           <div key={qIndex} className="mb-6">
             <div className="flex flex-wrap justify-center items-center">
-            <label className="block text-sm font-medium mb-2">Question {qIndex + 1}</label>
-            <input
-              type="text"
-              value={q.question}
-              onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
-              className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5"
-              placeholder="Enter your question"
-              required
-            />
+              <label className="block text-sm font-medium mb-2">Question {qIndex + 1}</label>
+              <input
+                type="text"
+                value={q.question}
+                onChange={(e) => handleQuestionChange(qIndex, e.target.value)}
+                className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-full p-2.5"
+                placeholder="Enter your question"
+                required
+              />
             </div>
-            {q.options.map((option, optIndex) => (
+            {q.answers.map((option, optIndex) => (
               <div key={optIndex} className="mt-2 flex flex-wrap items-center justify-between">
                 <label className="ml-2">
                   <input
                     type="radio"
                     name={`correct-${qIndex}`}
-                    checked={q.correct === optIndex}
+                    checked={q.correct_answer === option}
                     onChange={() => handleCorrectAnswerChange(qIndex, optIndex)}
                   />
                 </label>
@@ -102,14 +107,14 @@ const EnteredQuiz = ({
                   type="text"
                   value={option}
                   onChange={(e) => handleOptionChange(qIndex, optIndex, e.target.value)}
-                  className=" p-1 bg-gray-50 border border-gray-300 text-sm rounded-lg block w-[90%] p-2.5"
+                  className="p-1 bg-gray-50 border border-gray-300 text-sm rounded-lg block w-[90%] p-2.5"
                   placeholder={`Option ${optIndex + 1}`}
                   required
                 />
               </div>
-            ))} <br />
+            ))}
+            <br />
           </div>
-         
         ))}
         <button
           onClick={handleSubmit}

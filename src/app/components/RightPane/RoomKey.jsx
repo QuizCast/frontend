@@ -2,14 +2,68 @@
 
 import React from "react";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { setParticipant, setQuestions } from "@/store/Slices/participantSlice";
+import API_CONFIG from "../API";
 
 function RoomKey({ setRightComponent, setLeftComponent }) {
   const [name, setName] = useState(""); // State to store the message
   const [quizKey, setQuizKey] = useState(""); // State to store the message
+  const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
+
+  const dispatch = useDispatch();
+
+  const retrieveQuestions = async (name, quiz_key) => {
+    const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.joinQiuz}`;
+
+    try {
+      const response = await fetch(END_POINT, {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          room_key: Number(quiz_key), 
+          name: name,
+        }),
+      });
+
+      const responseData = await response.json();
+
+      if (response.ok) {
+        console.log(responseData);
+
+        const participant = {
+          id: responseData["id"],
+          name: name,
+          room_key: responseData["room_key"].toString(),
+        }
+
+        const questions = responseData["questions"];
+
+        dispatch(setParticipant(participant));
+        dispatch(setQuestions(questions));
+
+        setRightComponent("ReceiveMsg");
+      } else {
+        setErrorMessage("Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      setErrorMessage("An error occurred. Please try again.");
+    }
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(name, quizKey);
+
+
+
+    // recieve questions
+    retrieveQuestions(name, quizKey);
+
     setRightComponent("ReceiveMsg");
   };
 
