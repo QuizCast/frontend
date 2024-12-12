@@ -94,26 +94,24 @@ export default function Home() {
           <div
             className="w-2/5 h-full  flex items-center justify-center "
             style={{
-             backgroundSize: "cover",
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            
-            <div className="area" >
-            <ul className="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
-            </div >
-
+            <div className="area">
+              <ul className="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
             {renderLeftComponent()}
           </div>
 
