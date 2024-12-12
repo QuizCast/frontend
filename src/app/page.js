@@ -17,7 +17,12 @@ export default function Home() {
   const renderLeftComponent = () => {
     switch (leftComponent) {
       case "LeaderBoard":
-        return <LeaderBoard />;
+        return (
+          <LeaderBoard
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       default:
         return null;
     }
@@ -93,28 +98,26 @@ export default function Home() {
         <div className="flex h-full">
           {/* Left Half */}
           <div
-            className="w-2/5 h-full rounded-2xl flex items-center justify-center "
+            className="w-2/5 h-full  flex items-center justify-center "
             style={{
-             backgroundSize: "cover",
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            
-            <div className="area" >
-            <ul className="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
-            </div >
-
+            <div className="area">
+              <ul className="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+              </ul>
+            </div>
             {renderLeftComponent()}
           </div>
 

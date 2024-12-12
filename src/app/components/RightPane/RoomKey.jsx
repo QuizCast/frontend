@@ -50,14 +50,22 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
     //     Submit
     //   </button>
     // </form>
-
+    
     <div className="relative p-4 w-full max-w-md max-h-full">
+      <a className="flex p-4" onClick={() => setRightComponent("Join")}>
+        <label>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+        </svg>
+
+        </label>
+      </a>
       {/* <!-- Modal content --> */}
-      <div className="relative bg-gray-100 rounded-lg shadow dark:bg-gray-700">
+      <div className="relative  rounded-lg border-2">
         {/* <!-- Modal header --> */}
         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Join with a Session
+            Join into a Session
           </h3>
         </div>
         {/* <!-- Modal body --> */}

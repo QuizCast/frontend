@@ -6,6 +6,15 @@
 ::-webkit-scrollbar {
 display: none; /* Hides the scrollbar */
 }
+.border-1:hover{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.border-2{
+    border-radius: 1rem;
+    border-color: white;
+    padding: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 
 .bg-animated-gradien-1 {
     background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
@@ -13,12 +22,14 @@ display: none; /* Hides the scrollbar */
   }
   
   .area {
-    position: relative; /* Constrain positioned child elements */
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+    position: relative;
     width: 100%;
-    height: 100%; /* Adjust height to fit the parent container */
+    height: 100%; 
     background-color: #4158D0;
     background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-    overflow: hidden; /* Prevent animations from spilling outside */
+    overflow: hidden; 
 }
 
 .circles {
@@ -139,12 +150,4 @@ display: none; /* Hides the scrollbar */
   }
 }
 
-  .bg-animated-gradien-1 {
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
-    overflow: hidden;
-}
-
-
-
-/* Adjust child elements (nth-child) as needed */
 
