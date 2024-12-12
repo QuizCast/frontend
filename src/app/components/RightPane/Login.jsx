@@ -58,17 +58,6 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           </svg>
         </label>
       </a>
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("ReceiveMsg")}>
-        recevie
-        </label>
-      </a>
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Qsettings")}>
-       questions
-
-        </label>
-      </a>
       <div className="relative  rounded-lg border-2">
         <form className="space-y-6" onSubmit={checkCredentials}>
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
@@ -125,6 +114,17 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
             </a>
           </div>
         </form>
+        <a className="flex p-4">
+      <label  onClick={() => setRightComponent("ReceiveMsg")}>
+        recevie
+        </label>
+      </a>
+      <a className="flex p-4">
+      <label  onClick={() => setRightComponent("Qsettings")}>
+       questions
+
+        </label>
+      </a>
       </div>
     </div>
   );

@@ -132,9 +132,8 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen"
+      className="bg-animated-gradien-1 flex flex-col items-center justify-center h-screen"
       style={{
-        backgroundImage: "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -170,7 +169,7 @@ export default function Home() {
           </div>
 
           {/* Right Half */}
-          <div className="w-3/5 h-full flex items-center justify-center">
+          <div className="border-2 w-3/5 h-full flex items-center justify-center">
             {renderRightComponent()}
           </div>
         </div>
