@@ -11,8 +11,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
-
+  
   const checkCredentials = async (e) => {
     e.preventDefault(); 
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.login}`;
