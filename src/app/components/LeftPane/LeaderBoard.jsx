@@ -22,11 +22,6 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     <>
       <div className="w-full p-4 bg-gray-100 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
         <div className="flex items-center justify-center">
-          <img
-            src="logo.png"
-            alt="Centered Image"
-            className="w-40 rounded-sm"
-          />
         </div>
         <div className="w-full p-4">
           <span className="font-extrabold text-lg text-blue-800 dark:text-gray-400">
