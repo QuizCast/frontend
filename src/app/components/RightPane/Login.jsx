@@ -9,14 +9,14 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const checkCredentials = async (e) => {
-    e.preventDefault(); // Prevent form submission default behavior
-
+    e.preventDefault(); 
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.login}`;
 
     try {
       const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
+          accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -27,9 +27,10 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
 
       const responseData = await response.json();
 
+
       if (response.ok) {
         setLeftComponent("LeaderBoard");
-        setRightComponent("Questions");
+        setRightComponent("Qsettings");
       } else {
         setErrorMessage("Invalid credentials. Please try again.");
       }
@@ -100,7 +101,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           )}
           <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Login to your account
           </button>
@@ -115,8 +116,8 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           </div>
         </form>
         <a className="flex p-4">
-      <label  onClick={() => setRightComponent("ReceiveMsg")}>
-        recevie
+      <label  onClick={() => setRightComponent("BroadCast")}>
+        Broadcast
         </label>
       </a>
       <a className="flex p-4">

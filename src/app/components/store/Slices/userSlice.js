@@ -1,9 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    incompleteQuestions: [],
+    incompleteQuestions: [
+        {
+            id: 1,
+            question: "What is the capital of France?",
+            options: ["Paris", "London", "Berlin", "Madrid"],
+            correct: 0, // Index of the correct option
+        },
+        {
+            id: 2,
+            question: "What is 2 + 2?",
+            options: ["3", "4", "5", "6"],
+            correct: 1,
+        },
+        {
+            id: 3,
+            question: "What is the largest planet in our solar system?",
+            options: ["Earth", "Mars", "Jupiter", "Venus"],
+            correct: 2,
+        },
+    ],
     completedQuestions: [],
 };
+
 
 const userSlice = createSlice({
     name: "user",
