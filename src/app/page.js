@@ -92,7 +92,7 @@ export default function Home() {
         <div className="flex h-full">
           {/* Left Half */}
           <div
-            className="w-2/5 h-full rounded-2xl flex items-center justify-center "
+            className="w-2/5 h-full  flex items-center justify-center "
             style={{
              backgroundSize: "cover",
               backgroundPosition: "center",
