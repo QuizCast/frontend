@@ -5,6 +5,7 @@ import API_CONFIG from "../API";
 
 const SignUp = ({ setRightComponent, setLeftComponent }) => {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -16,13 +17,17 @@ const SignUp = ({ setRightComponent, setLeftComponent }) => {
       const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
-          "Content-Type": "application/x-www-form-urlencoded",
+          "Content-Type": "application/json",
         },
-        body: new URLSearchParams({
-          email: email,
-          password: password,
+        body: JSON.stringify({
+          userName,
+          email,
+          password,
         }),
       });
+
+      const responseData = await response.json();
+      console.log(responseData);
 
       if (response.ok) {
         setRightComponent("Login");
@@ -54,6 +59,23 @@ const SignUp = ({ setRightComponent, setLeftComponent }) => {
           <label
             className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
+            Your Name
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+            placeholder="Enter your name"
+            value={name}
+            onChange={(e) => setUserName(e.target.value)}
+            required
+          />
+        </div>
+        <div>
+          <label
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
             Your email
           </label>
           <input
@@ -77,7 +99,7 @@ const SignUp = ({ setRightComponent, setLeftComponent }) => {
             type="password"
             name="password"
             id="password"
-            placeholder="Enter"
+            placeholder="********"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
