@@ -13,11 +13,18 @@ display: none; /* Hides the scrollbar */
     border-radius: 1rem;
     border-color: white;
     padding: 2rem;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(153, 0, 255, 0.2) 0px 7px 29px 0px;
 }
 
+.position-1 {
+    position: absolute;
+    top: 25px;
+    left: calc(100vw - 55vw);
+  }
+  
+
 .bg-animated-gradien-1 {
-    background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
+    background: radial-gradient(ellipse at bottom, #321d3f 0%, #0c090f 100%);
     overflow: hidden;
   }
   
