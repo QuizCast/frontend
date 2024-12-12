@@ -141,7 +141,7 @@ export default function Home() {
 
   return (
     <div
-      className="bg-animated-gradien-1 flex flex-col items-center justify-center h-screen "
+      className="bg-animated-gradien-1 flex flex-col items-center justify-center h-screen"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
