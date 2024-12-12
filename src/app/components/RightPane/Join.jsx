@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
@@ -51,7 +49,15 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
     // </div>
     
 <>
-<div className="w-full max-w-sm p-4  rounded-lg sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+
+<div className="w-full max-w-sm p-4 bg-blue-50 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div className="flex items-center justify-center">
+  <img
+    src="logo.png"
+    alt="Centered Image"
+    className="w-40 rounded-sm"
+  />
+</div>
 <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose your role...</h3>
   <ul className="grid w-full gap-2 md:grid-cols-1">
    <a onClick={() => setRightComponent("Login")}>
@@ -66,11 +72,11 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
       />
       <label
         htmlFor="hosting-small"
-        className="border-1 inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
+        className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
       >
         <div className="block">
           <div className="w-full text-lg font-semibold">Host</div>
-          <div className="w-full">To create a session.</div>
+          <div className="w-full">For create a session.</div>
         </div>
         <svg
           className="w-5 h-5 ms-3 rtl:rotate-180"
@@ -102,11 +108,11 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
       />
       <label
         htmlFor="hosting-big"
-        className="border-1 inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
+        className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
       >
         <div className="block">
           <div className="w-full text-lg font-semibold">Participant</div>
-          <div className="w-full">To join a session.</div>
+          <div className="w-full">For join with a session.</div>
         </div>
         <svg
           className="w-5 h-5 ms-3 rtl:rotate-180"

@@ -12,7 +12,7 @@ import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 
 export default function Home() {
-  const [leftComponent, setLeftComponent] = useState(null);
+  const [leftComponent, setLeftComponent] = useState("LeaderBoard");
   const [rightComponent, setRightComponent] = useState("Join");
 
   const [quizSettings, setQuizSettings] = useState({
@@ -23,7 +23,12 @@ export default function Home() {
   const renderLeftComponent = () => {
     switch (leftComponent) {
       case "LeaderBoard":
-        return <LeaderBoard />;
+        return (
+          <LeaderBoard
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       default:
         return null;
     }
@@ -101,8 +106,9 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen bg-animated-gradien-1"
+      className="flex flex-col items-center justify-center h-screen"
       style={{
+        backgroundImage: "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -112,29 +118,29 @@ export default function Home() {
         <div className="flex h-full">
           {/* Left Half */}
           <div
-            className="w-2/5 h-full  flex items-center justify-center "
+            className="w-2/5 h-full flex items-center justify-center relative"
             style={{
-             backgroundSize: "cover",
+              backgroundSize: "cover",
               backgroundPosition: "center",
             }}
           >
-            
-            <div className="area" >
-            <ul className="circles">
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-            </ul>
-            </div >
-
-            {renderLeftComponent()}
+            <div className="absolute inset-0 z-0">
+              <div className="area">
+                <ul className="circles">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+            <div className="z-10 w-4/5">{renderLeftComponent()}</div>
           </div>
 
           {/* Right Half */}
@@ -147,8 +153,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by Team{" "}
-          <span className="font-extrabold text-yellow-100">QuizCast</span> ❤️
+          This is created by {" "}
+          <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
     </div>
