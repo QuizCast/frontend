@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import API_CONFIG from "../../API";
+import { useSelector } from "react-redux";
 
 const EnteredQuiz = ({ 
   count, 
@@ -12,9 +14,11 @@ const EnteredQuiz = ({
     Array.from({ length: count }, () => ({
       question: "",
       options: ["", "", "", ""],
-      correct: 0,
+      correct: "",
     }))
   );
+
+  const user = useSelector((state) => state.user.user);
 
   const handleQuestionChange = (index, value) => {
     const updatedQuestions = [...questions];
@@ -36,13 +40,22 @@ const EnteredQuiz = ({
 
   const handleSubmit = async () => {
     // Send the quiz data to the server
+    console.log();
+
+    console.log("Submitting quiz:",questions[0]);
+
+    const END_POINT = process.env.NEXT_PUBLIC_BACKEND_URL + API_CONFIG.addQuiz;
     try {
-      const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_URL + "/quiz", {
+      const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ time, questions }),
+        body: JSON.stringify({ 
+          user_id: user['user_id'],
+          time: time, 
+          questions: questions[0],
+         }),
       });
       
       if (response.ok) {
