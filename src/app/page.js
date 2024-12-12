@@ -128,8 +128,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by Team{" "}
-          <span className="font-extrabold text-yellow-100">QuizCast</span> ❤️
+          This is created by {" "}
+          <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
     </div>

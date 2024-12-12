@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
@@ -51,7 +49,15 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
     // </div>
     
 <>
+
 <div className="w-full max-w-sm p-4 bg-emerald-50 border border-gray-200 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+<div className="flex items-center justify-center">
+  <img
+    src="logo.png"
+    alt="Centered Image"
+    className="w-40 rounded-sm"
+  />
+</div>
 <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">Choose your role...</h3>
   <ul className="grid w-full gap-2 md:grid-cols-1">
    <a onClick={() => setRightComponent("Login")}>
