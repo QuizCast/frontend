@@ -25,19 +25,15 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
         }),
       });
 
-      // Check for successful response
+      const responseData = await response.json();
+
       if (response.ok) {
-        const responseData = await response.json();
-        console.log(responseData); // Log the response for debugging or further processing
         setLeftComponent("LeaderBoard");
         setRightComponent("Questions");
       } else {
-        const errorData = await response.json(); // Log error details if available
-        console.error("Error details:", errorData);
         setErrorMessage("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      console.error("Network or unexpected error:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
