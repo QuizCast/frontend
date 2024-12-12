@@ -6,7 +6,7 @@ const Qsettings = ({ setRightComponent }) => {
   const [count, setCount] = useState(3);
   const [time, setTime] = useState(10);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const quizSettings = { count, time };
   const validateInputs = () => {
     if (count < 1 || count > 10) {
       setErrorMessage("Number of questions must be between 1 and 10.");
@@ -29,7 +29,7 @@ const Qsettings = ({ setRightComponent }) => {
     console.log("time", time);
 
     // Pass props to EnteredQuiz
-    setRightComponent("EnteredQuiz"); // You should set the component here
+    setRightComponent("EnteredQuiz", quizSettings);
   };
 
   return (
