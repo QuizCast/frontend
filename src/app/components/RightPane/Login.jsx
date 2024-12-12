@@ -52,7 +52,7 @@ const Login = ({ setRightComponent }) => {
         </label>
       </a>
       <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Questions")}>
+      <label  onClick={() => setRightComponent("Qsettings")}>
        questions
 
         </label>

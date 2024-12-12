@@ -8,11 +8,17 @@ import Join from "./components/RightPane/Join";
 import BroadCast from "./components/RightPane/BroadCast";
 import ReceiveMsg from "./components/RightPane/ReceiveMsg";
 import RoomKey from "./components/RightPane/RoomKey";
-import Questions from "./components/RightPane/Questions";
+import Qsettings from "./components/RightPane/Questions/Qsettings";
+import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState(null);
   const [rightComponent, setRightComponent] = useState("Join");
+
+  const [quizSettings, setQuizSettings] = useState({
+    count: 3,
+    time: 10
+  });
 
   const renderLeftComponent = () => {
     switch (leftComponent) {
@@ -67,13 +73,27 @@ export default function Home() {
             setLeftComponent={setLeftComponent}
           />
         );
-      case "Questions":
-        return (
-          <Questions
-            setRightComponent={setRightComponent}
-            setLeftComponent={setLeftComponent}
-          />
-        );
+        case "Qsettings":
+          return (
+            <Qsettings
+              setRightComponent={(component, settings) => {
+                setRightComponent(component);
+                if (settings) {
+                  setQuizSettings(settings);
+                }
+              }}
+              setLeftComponent={setLeftComponent}
+            />
+          );
+          case "EnteredQuiz":
+            return (
+              <EnteredQuiz
+                count={quizSettings.count}
+                time={quizSettings.time}
+                setRightComponent={setRightComponent}
+                setLeftComponent={setLeftComponent}
+              />
+            );
       default:
         return <Login />;
     }
