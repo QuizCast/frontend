@@ -2,11 +2,16 @@
 
 import React, { useState } from "react";
 import API_CONFIG from "../API";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "@/store/Slices/userSlice";
 
 const Login = ({ setRightComponent, setLeftComponent }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
 
   const checkCredentials = async (e) => {
     e.preventDefault(); 
@@ -27,8 +32,8 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
 
       const responseData = await response.json();
 
-
       if (response.ok) {
+        dispatch(setUser(responseData));
         setLeftComponent("LeaderBoard");
         setRightComponent("Qsettings");
       } else {
