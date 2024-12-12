@@ -15,22 +15,12 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
 
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
-      <a className="flex p-4" onClick={() => setRightComponent("Join")}>
-        <label>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="size-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-            />
-          </svg>
+      <a className="flex p-4">
+        <label  onClick={() => setRightComponent("Join")}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18" />
+        </svg>
+
         </label>
       </a>
       <div className="relative  rounded-lg border-2">

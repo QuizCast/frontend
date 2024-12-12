@@ -7,7 +7,7 @@
 display: none; /* Hides the scrollbar */
 }
 .border-1:hover{
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(226, 77, 231, 0.2) 0px 7px 29px 0px;
 }
 .border-2{
     border-radius: 1rem;
