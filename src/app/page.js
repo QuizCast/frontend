@@ -18,7 +18,7 @@ export default function Home() {
 
   const [quizSettings, setQuizSettings] = useState({
     count: 3,
-    time: 10
+    time: 10,
   });
 
   // const [sessionStarted, setSessionStarted] = useState(false); // Track session status
@@ -135,7 +135,12 @@ export default function Home() {
                 />
             );
       default:
-        return <Login />;
+        return (
+          <Login
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
     }
   };
 
@@ -218,7 +223,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by {" "}
+          This is created by{" "}
           <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
