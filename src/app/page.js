@@ -17,7 +17,12 @@ export default function Home() {
   const renderLeftComponent = () => {
     switch (leftComponent) {
       case "LeaderBoard":
-        return <LeaderBoard />;
+        return (
+          <LeaderBoard
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       default:
         return null;
     }
