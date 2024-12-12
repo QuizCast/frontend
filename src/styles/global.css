@@ -27,7 +27,18 @@ display: none; /* Hides the scrollbar */
     background: radial-gradient(ellipse at bottom, #321d3f 0%, #0c090f 100%);
     overflow: hidden;
   }
-  
+
+.bg-animated-gradien-1 {
+    background: radial-gradient(ellipse at bottom, #321d3f 0%, #0c090f 100%);
+    overflow: hidden;
+  }
+  .bg-glass-1 {
+    background: rgba(255, 255, 255, 0.32);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(14.1px);
+    -webkit-backdrop-filter: blur(14.1px);
+  }
   .area {
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
