@@ -26,10 +26,9 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
       });
 
       const responseData = await response.json();
-      console.log(responseData);
 
-      if (response.status === 200) {
-        console.log("Login successful!");
+
+      if (response.ok) {
         setLeftComponent("LeaderBoard");
         setRightComponent("Qsettings");
       } else {
