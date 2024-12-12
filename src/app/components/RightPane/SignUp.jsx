@@ -5,7 +5,7 @@ import API_CONFIG from "../API";
 
 const SignUp = ({ setRightComponent, setLeftComponent }) => {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -20,7 +20,7 @@ const SignUp = ({ setRightComponent, setLeftComponent }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name,
+          userName,
           email,
           password,
         }),
@@ -68,7 +68,7 @@ const SignUp = ({ setRightComponent, setLeftComponent }) => {
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
             placeholder="Enter your name"
             value={name}
-            onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setUserName(e.target.value)}
             required
           />
         </div>

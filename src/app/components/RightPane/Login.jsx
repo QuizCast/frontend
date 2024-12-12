@@ -31,11 +31,9 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
         setLeftComponent("LeaderBoard");
         setRightComponent("Questions");
       } else {
-        console.error("Error details:", errorData);
         setErrorMessage("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      console.error("Network or unexpected error:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
