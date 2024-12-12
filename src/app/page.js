@@ -81,8 +81,9 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen bg-animated-gradien-1"
+      className="flex flex-col items-center justify-center h-screen"
       style={{
+        backgroundImage: "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
