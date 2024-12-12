@@ -86,8 +86,9 @@ export default function Home() {
 
   return (
     <div
-      className="flex flex-col items-center justify-center h-screen bg-animated-gradien-1"
+      className="flex flex-col items-center justify-center h-screen"
       style={{
+        backgroundImage: "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
@@ -132,8 +133,8 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by Team{" "}
-          <span className="font-extrabold text-yellow-100">QuizCast</span> ❤️
+          This is created by {" "}
+          <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
     </div>
