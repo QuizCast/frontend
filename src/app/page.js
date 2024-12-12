@@ -139,11 +139,6 @@ export default function Home() {
     <div
       className="bg-animated-gradien-1 flex flex-col items-center justify-center h-screen"
       style={{
-<<<<<<< HEAD
-        backgroundImage:
-          "url('https://img.freepik.com/premium-photo/elegant-futuristic-light-reflection-with-grid-line-background_475456-1314.jpg?semt=ais_hybrid')",
-=======
->>>>>>> 2feb24f4f8bfc125f5533c454a1d12c954a6ed34
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
