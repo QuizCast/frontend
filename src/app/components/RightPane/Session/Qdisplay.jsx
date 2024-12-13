@@ -3,6 +3,7 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 import { removeParticipant, cleanQuestions } from "@/store/Slices/participantSlice";
+import { removeRoom } from "@/store/Slices/roomSlice";
 import API_CONFIG from "../../API";
 
 const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
@@ -101,7 +102,9 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
   const resetParticipant = () => {
     dispatch(removeParticipant());
     dispatch(cleanQuestions());
+    dispatch(removeRoom());
     setRightComponent("Join");
+    setLeftComponent("Welcome");
   };
 
   if (quizCompleted) {

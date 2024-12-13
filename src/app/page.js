@@ -12,7 +12,6 @@ import RoomKey from "./components/RightPane/RoomKey";
 import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 import Qdisplay from "./components/RightPane/Session/Qdisplay";
-import UserSession from "./components/RightPane/UserSession";
 import NavBar from "./components/RightPane/NavBar";
 
 export default function Home() {
