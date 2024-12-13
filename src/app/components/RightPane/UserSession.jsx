@@ -4,21 +4,22 @@ import { cleanUser } from "@/store/Slices/userSlice";
 
 const UserSession = ({ setRightComponent, setLeftComponent }) => {
   const dispatch = useDispatch();
-  const { name, email } = useSelector((state) => {
+  const { name, email, img_url } = useSelector((state) => {
     if (state.user.user === null) {
       return {
         name: "User",
         email: "need to login",
+        img_url: "profile2.png",
       };
     } else {
       return {
         name: state.user.user.name,
         email: state.user.user.email,
+        img_url: state.user.user.img_url,
       };
     }
   });
-  
- 
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -26,8 +27,9 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
   };
 
   const logout = () => {
-      dispatch(cleanUser());
-  }
+    dispatch(cleanUser());
+    setRightComponent("Join");
+  };
 
   return (
     <div className="relative flex align-center">
@@ -42,7 +44,7 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
       >
         <img
           className="w-8 h-8 rounded-full"
-          src="profile2.png"
+          src={img_url}
           alt="user photo"
         />
       </button>
@@ -59,6 +61,12 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
           <div className="font-medium truncate">{email}</div>
         </div>
         <div className="py-2">
+          {name !== "User" && (<a
+            onClick={() => setRightComponent("Profile")}
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+          >
+            Profile
+          </a>)}
           <a
             onClick={logout}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"

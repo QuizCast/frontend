@@ -1,6 +1,7 @@
 import React from "react";
 
 const Welcome = ({ setRightComponent, setLeftComponent }) => {
+
   return (
     <div className="bg-glass-1 w-full p-4 md:p-6 lg:p-8 rounded-lg">
       <div className="flex flex-col items-center text-center">
@@ -14,6 +15,7 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
             className="h-16 md:h-20 lg:h-24"
             alt="Quiz Logo"
           />
+
           <span className="text-2xl md:text-3xl lg:text-4xl font-semibold whitespace-nowrap dark:text-white">
           QuizCast
           </span>
@@ -25,6 +27,7 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
         <p className="text-md md:text-lg lg:text-xl font-normal text-gray-900 dark:text-gray-400 mb-6">
           "QuizCast" is an innovative platform for scheduling online quiz competitions, offering real-time interaction and a seamless, engaging experience.
         </p>
+
 
         {/* Action Button */}
         <div className="flex justify-center">
