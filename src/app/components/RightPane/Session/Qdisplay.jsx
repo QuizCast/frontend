@@ -1,7 +1,7 @@
 "use client";
 
 import { useDispatch, useSelector } from "react-redux";
-import { removeIncompleteQuestions } from "../../store/Slices/userSlice";
+import { removeQuestions } from "../../../../store/Slices/userSlice";
 
 const Qdisplay = () => {
   const dispatch = useDispatch();
