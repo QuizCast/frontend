@@ -13,6 +13,7 @@ import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import NavBar from "./components/RightPane/NavBar";
+import AboutUs from "./components/RightPane/AboutUs";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("Welcome");
@@ -48,6 +49,13 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
+      case "AboutUs":
+        return(
+          <AboutUs
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       case "SignUp":
         return (
           <SignUp
@@ -186,7 +194,7 @@ export default function Home() {
           </div>
 
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col">
+          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
             {/* Top Navbar */}
 
             <div className="w-full h-[10%] flex items-start justify-between p-4">
@@ -194,24 +202,6 @@ export default function Home() {
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}
               />
-              {/* <a className="z-50 flex p-4" onClick={() => setRightComponent("Join")}>
-          <label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-              />
-            </svg>
-          </label>
-        </a> */}
             </div>
 
             {/* Content Area */}
