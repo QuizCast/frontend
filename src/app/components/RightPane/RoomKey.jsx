@@ -24,7 +24,7 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          room_key: Number(quiz_key), 
+          room_key: Number(quiz_key),
           name: name,
         }),
       });
@@ -32,13 +32,11 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
       const responseData = await response.json();
 
       if (response.ok) {
-        console.log(responseData);
-
         const participant = {
           id: responseData["id"],
           name: name,
           room_key: responseData["room_key"].toString(),
-        }
+        };
 
         const questions = responseData["questions"];
 
@@ -54,12 +52,8 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
     }
   };
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, quizKey);
-
-
 
     // recieve questions
     retrieveQuestions(name, quizKey);
@@ -70,12 +64,6 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
       <div className="relative  rounded-lg border-2">
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Qdisplay")}>
-       qdispaly
-
-        </label>
-      </a>
         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Join into a Session
@@ -111,11 +99,11 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
               />
             </div>
             <button
-            type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Join
-          </button>
+              type="submit"
+              className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            >
+              Join
+            </button>
           </form>
         </div>
       </div>

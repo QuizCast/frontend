@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const ReceiveMsg = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const [message, setMessage] = useState(null); // State to store the received message
-  
+  const [loading, setLoading] = useState(true); // State to manage waiting animation
   const room_key = useSelector((state) => state.participant.Participant["room_key"]);
 
   useEffect(() => {
@@ -16,7 +16,13 @@ const ReceiveMsg = ({ setRightComponent, setLeftComponent }) => {
     // Listen for broadcast messages
     channel.on("broadcast", { event: "cursor-pos" }, (payload) => {
       console.log("Message received:", payload);
-      setMessage(payload.payload.message); // Update state with the received message
+      const receivedMessage = payload.payload.message;
+      setMessage(receivedMessage); // Update state with the received message
+
+      if (receivedMessage === "Start") {
+        setLoading(false); // Stop waiting animation
+        setRightComponent("Qdisplay"); // Render the Questions component
+      }
     });
 
     // Subscribe to the channel
@@ -35,11 +41,13 @@ const ReceiveMsg = ({ setRightComponent, setLeftComponent }) => {
 
   return (
     <div className="p-4">
-      <h2 className="text-lg font-bold">Receive Messages</h2>
-      {message ? (
-        <p className="mt-2 text-green-600">Received Message: {message}</p>
+      {loading ? (
+        <div className="flex flex-col items-center">
+          <h2 className="text-lg font-bold">Waiting for Messages...</h2>
+          <div className="mt-4 animate-spin rounded-full h-12 w-12 border-t-4 border-blue-500 border-solid"></div>
+        </div>
       ) : (
-        <p className="mt-2 text-gray-500">Waiting for messages...</p>
+        <h2 className="text-lg font-bold">Receiving Messages...</h2>
       )}
     </div>
   );
