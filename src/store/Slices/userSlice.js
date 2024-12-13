@@ -2,13 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user: null,
-    Questions: [
-        {
-            question: "What is the capital of France?",
-            answers: ["Paris", "London", "Berlin", "Madrid"],
-            correct_answer: "Paris", // Index of the correct option
-        },
-    ],
+    Questions: [],
 };
 
 
