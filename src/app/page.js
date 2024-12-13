@@ -15,7 +15,7 @@ import UserSession from "./components/RightPane/UserSession";
 import NavBar from "./components/RightPane/NavBar";
 
 export default function Home() {
-  const [leftComponent, setLeftComponent] = useState(null);
+  const [leftComponent, setLeftComponent] = useState("LeaderBoard");
   const [rightComponent, setRightComponent] = useState("Join");
 
   const [quizSettings, setQuizSettings] = useState({
@@ -179,7 +179,7 @@ export default function Home() {
   <div className="flex h-full">
     {/* Left Half */}
     <div
-      className="w-2/5 h-full flex items-center justify-center relative"
+      className="w-2/5 h-full flex items-center justify-center relative rounded-bl-2xl rounded-tl-2xl"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
