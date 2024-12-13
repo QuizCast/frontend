@@ -17,8 +17,7 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
       };
     }
   });
-  
- 
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -26,8 +25,9 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
   };
 
   const logout = () => {
-      dispatch(cleanUser());
-  }
+    dispatch(cleanUser());
+    setRightComponent("Join");
+  };
 
   return (
     <div className="relative flex align-center">
@@ -59,6 +59,12 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
           <div className="font-medium truncate">{email}</div>
         </div>
         <div className="py-2">
+          {name !== "User" && (<a
+            onClick={() => setRightComponent("Profile")}
+            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"
+          >
+            Profile
+          </a>)}
           <a
             onClick={logout}
             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white cursor-pointer"

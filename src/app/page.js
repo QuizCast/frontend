@@ -14,6 +14,7 @@ import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import NavBar from "./components/RightPane/NavBar";
 import AboutUs from "./components/RightPane/AboutUs";
+import Profile from "./components/RightPane/Profile";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("Welcome");
@@ -52,6 +53,13 @@ export default function Home() {
       case "AboutUs":
         return(
           <AboutUs
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
+      case "Profile":
+        return (
+          <Profile
             setRightComponent={setRightComponent}
             setLeftComponent={setLeftComponent}
           />
