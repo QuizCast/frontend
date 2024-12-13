@@ -12,6 +12,7 @@ import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import UserSession from "./components/RightPane/UserSession";
+import NavBar from "./components/RightPane/NavBar";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("LeaderBoard");
@@ -63,6 +64,13 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
+      case "NavBar":
+        return (
+          <NavBar
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       case "SignUp":
         return (
           <SignUp
@@ -166,69 +174,78 @@ export default function Home() {
         <li></li>
       </ul>
   
-      {/* Large Floating Card */}
-      <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
-        <div className="flex h-full">
-          {/* Left Half */}
-          <div
-            className="w-2/5 h-full flex items-center justify-center relative"
-            style={{
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              maxHeight: "100%", // Prevent overflow
-              overflow: "hidden", // Optional: Control overflow behavior
-            }}
-          >
-            <div className="absolute inset-0 z-0">
-              <div className="area">
-                <ul className="circles">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </div>
-            </div>
-            <div className="z-10 block w-4/5 h-full flex items-center justify-center">{renderLeftComponent()}</div>
-          </div>
-  
-          {/* Right Half */}
-          <div
-            className="z-10 block p-1 w-3/5 h-full flex items-center justify-center"
-            style={{
-              maxHeight: "100%", // Prevent overflow
-              overflow: "auto", // Optional: Allows scrolling if content exceeds height
-            }}
-          >
-            <div className="z-50 position-2"><UserSession></UserSession></div>
-            <a className="z-50 flex p-4 position-1" onClick={() => setRightComponent("Join")}>
-              <label>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="size-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-                  />
-                </svg>
-              </label>
-            </a>
-            {renderRightComponent()}
-          </div>
+{/* Large Floating Card */}
+<div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
+  <div className="flex h-full">
+    {/* Left Half */}
+    <div
+      className="w-2/5 h-full flex items-center justify-center relative"
+      style={{
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        maxHeight: "100%", // Prevent overflow
+        overflow: "hidden", // Optional: Control overflow behavior
+      }}
+    >
+      <div className="absolute inset-0 z-0">
+        <div className="area">
+          <ul className="circles">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
         </div>
       </div>
+      <div className="z-10 block w-4/5 h-full flex items-center justify-center">{renderLeftComponent()}</div>
+    </div>
+
+    {/* Right Half */}
+    <div className="w-3/5 h-full flex flex-col">
+      {/* Top Navbar */}
+      
+      <div className="w-full h-[10%] flex items-start justify-between p-4">
+      <NavBar></NavBar>
+        {/* <a className="z-50 flex p-4" onClick={() => setRightComponent("Join")}>
+          <label>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              className="size-6"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+              />
+            </svg>
+          </label>
+        </a> */}
+      </div>
+
+      {/* Content Area */}
+      <div
+        className="flex-grow flex items-center justify-center p-1"
+        style={{
+          maxHeight: "90%", // Adjust to leave space for the navbar
+          overflow: "auto", // Optional: Allows scrolling if content exceeds height
+        }}
+      >
+        {renderRightComponent()}
+      </div>
+    </div>
+  </div>
+</div>
+
 
       {/* Footer */}
       <footer className="w-full p-1 text-center">

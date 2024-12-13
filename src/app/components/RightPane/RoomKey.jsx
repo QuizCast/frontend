@@ -70,6 +70,12 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
       <div className="relative  rounded-lg border-2">
+      <a className="flex p-4">
+      <label  onClick={() => setRightComponent("Qdisplay")}>
+       qdispaly
+
+        </label>
+      </a>
         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Join into a Session

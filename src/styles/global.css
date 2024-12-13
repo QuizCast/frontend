@@ -18,19 +18,7 @@ display: none; /* Hides the scrollbar */
 .border-3{
     box-shadow: rgba(226, 77, 231, 0.2) 0px 7px 29px 0px;
 }
-
-.position-1 {
-    position: absolute;
-    top: 25px;
-    left: calc(100vw - 55vw);
-  }
-  .position-2 {
-    position: absolute;
-    top: 25px;
-    left: calc(100vw - 15vw);
-  }
   
-
 .bg-animated-gradien-1 {
     background: radial-gradient(ellipse at bottom, #321d3f 0%, #0c090f 100%);
     overflow: hidden;
