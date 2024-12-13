@@ -8,7 +8,7 @@ const UserSession = () => {
   };
 
   return (
-    <div className="relative">
+    <div className="relative flex align-center">
       {/* Dropdown Button */}
       <button
         type="button"
@@ -16,7 +16,7 @@ const UserSession = () => {
         aria-expanded={isDropdownOpen}
         aria-controls="dropdownInformation"
         onClick={toggleDropdown}
-        className="text-white font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+        className="z-50 text-white font-medium rounded-lg text-sm px-5  text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         <img
           className="w-8 h-8 rounded-full"
@@ -28,7 +28,7 @@ const UserSession = () => {
       {/* Dropdown Menu */}
       <div
         id="dropdownInformation"
-        className={`absolute right-0 mt-2 z-40 ${
+        className={`absolute top-8 right-0 mt-2 z-40 ${
           isDropdownOpen ? "block" : "hidden"
         }  border-3 bg-white divide-y divide-gray-300 rounded-lg shadow-lg w-44 dark:bg-gray-700 dark:divide-gray-600`}
       >
