@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    Participant: {"id": null, "name": "", "room_key": ""},
+    Participant: {},
     Questions: [],
 };
 
@@ -14,7 +14,7 @@ const participantSlice = createSlice({
             state.Participant = action.payload;
         },
         removeParticipant: (state) => {
-            state.Participant = {"id": null, "name": "", "room_key": ""};
+            state.Participant = {};
         },
         setQuestions: (state, action) => {
             state.Questions = [action.payload];
