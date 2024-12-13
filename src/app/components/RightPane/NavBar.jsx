@@ -17,7 +17,7 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
   };
 
   return (
-    <nav className="bg-white dark:bg-gray-900  w-full z-20 ">
+    <nav className="w-full z-20 ">
       <div className="max-w-screen-xl flex flex-wrap items-center align-start justify-between mx-auto ">
           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="logo2.png" className="h-8" alt="Flowbite Logo" />
@@ -51,7 +51,10 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
               />
             </svg>
           </button>
-          <UserSession/>
+          <UserSession
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
         </div>
 
         <div
