@@ -22,6 +22,7 @@ const ReceiveMsg = ({ setRightComponent, setLeftComponent }) => {
       if (receivedMessage === "Start") {
         setLoading(false); // Stop waiting animation
         setRightComponent("Qdisplay"); // Render the Questions component
+        setLeftComponent("LeaderBoard"); // Render the LeaderBoard component
       }
     });
 
