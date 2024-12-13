@@ -5,14 +5,14 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
     <>
       <div className="w-full max-w-sm p-4   ">
         <div className="flex items-center justify-center">
-          <img
+          {/* <img
             src="logo.png"
             alt="Centered Image"
             className="w-40 rounded-sm"
-          />
+          /> */}
         </div>
-        <h3 className="mb-5 text-lg font-medium text-gray-900 dark:text-white">
-          Choose your role...
+        <h3 className="mb-5 flex justify-center text-lg font-medium text-gray-900 dark:text-white">
+          Choose Your Role
         </h3>
         <ul className="grid w-full gap-2 md:grid-cols-1">
           <a onClick={() => setRightComponent("Login")}>
