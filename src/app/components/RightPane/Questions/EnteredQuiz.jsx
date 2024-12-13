@@ -66,6 +66,7 @@ const EnteredQuiz = ({
       if (response.ok) {
         dispatch(setRoom(responseData["room_key"]));
         setRightComponent("BroadCast"); 
+        setLeftComponent("LeaderBoard");
       } else {
         alert("Failed to create quiz. Please try again.");
       }
