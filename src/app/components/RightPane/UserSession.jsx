@@ -4,16 +4,18 @@ import { cleanUser } from "@/store/Slices/userSlice";
 
 const UserSession = ({ setRightComponent, setLeftComponent }) => {
   const dispatch = useDispatch();
-  const { name, email } = useSelector((state) => {
+  const { name, email, img_url } = useSelector((state) => {
     if (state.user.user === null) {
       return {
         name: "User",
         email: "need to login",
+        img_url: "profile2.png",
       };
     } else {
       return {
         name: state.user.user.name,
         email: state.user.user.email,
+        img_url: state.user.user.img_url,
       };
     }
   });
@@ -42,7 +44,7 @@ const UserSession = ({ setRightComponent, setLeftComponent }) => {
       >
         <img
           className="w-8 h-8 rounded-full"
-          src="profile2.png"
+          src={img_url}
           alt="user photo"
         />
       </button>
