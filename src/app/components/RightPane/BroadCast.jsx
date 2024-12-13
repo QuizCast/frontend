@@ -96,29 +96,85 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
       </div>
 
       {/* Buttons */}
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <button
-          type="submit"
-          className="w-full px-5 py-3 text-white bg-green-500 rounded-lg hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-300 dark:focus:ring-green-700"
-          onClick={() => setMessage("Start")}
+      <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+  <ul className="space-y-4 mb-4">
+    <li>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-green-200 rounded-lg cursor-pointer hover:bg-green-100 hover:text-green-900 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 dark:border-green-600"
+        onClick={() => setMessage("Start")}
+      >
+        <div className="block">
+          <div className="w-full text-lg font-semibold">Start Quiz</div>
+        </div>
+        <svg
+          className="w-4 h-4 text-gray-500 dark:text-gray-400"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
         >
-          Start Quiz
-        </button>
-        <button
-          type="submit"
-          className="w-full px-5 py-3 text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-blue-700"
-          onClick={() => setMessage("End")}
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
+      </button>
+    </li>
+    <li>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 hover:text-blue-800 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-400 dark:border-blue-800"
+        onClick={() => setMessage("End")}
+      >
+        <div className="block">
+          <div className="w-full text-lg font-semibold">End Quiz</div>
+        </div>
+        <svg
+          className="w-4 h-4 text-gray-500 dark:text-gray-400"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
         >
-          End Quiz
-        </button>
-        <button
-          type="button"
-          className="w-full px-5 py-3 text-white bg-red-500 rounded-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300 dark:focus:ring-red-700"
-          onClick={deleteRoom}
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
+      </button>
+    </li>
+    <li>
+      <button
+        type="submit"
+        className="inline-flex items-center justify-between w-60 p-5 text-black bg-white border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 hover:text-red-900 dark:bg-gray-600 dark:text-white dark:hover:bg-red-300 dark:border-red-600"
+        onClick={() => deleteRoom()}
+      >
+        <div className="block">
+          <div className="w-full text-lg font-semibold">Delete Room</div>
+        </div>
+        <svg
+          className="w-4 h-4 text-gray-500 dark:text-gray-400"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 14 10"
         >
-          Delete Room
-        </button>
-      </form>
+          <path
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            d="M1 5h12m0 0L9 1m4 4L9 9"
+          />
+        </svg>
+      </button>
+    </li>
+  </ul>
+</form>
 
       {/* Error Message */}
       {errorMessage && (
