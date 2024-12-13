@@ -16,11 +16,7 @@ import UserSession from "./components/RightPane/UserSession";
 import NavBar from "./components/RightPane/NavBar";
 
 export default function Home() {
-<<<<<<< HEAD
   const [leftComponent, setLeftComponent] = useState("Welcome");
-=======
-  const [leftComponent, setLeftComponent] = useState("LeaderBoard");
->>>>>>> 3cb263edff5c8497c224ef8cf5016cc2916ecd21
   const [rightComponent, setRightComponent] = useState("Join");
 
   const [quizSettings, setQuizSettings] = useState({
