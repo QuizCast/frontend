@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import LeaderBoard from "./components/LeftPane/LeaderBoard";
+import Welcome from "./components/LeftPane/Welcome";
 import Login from "./components/RightPane/Login";
 import SignUp from "./components/RightPane/SignUp";
 import Join from "./components/RightPane/Join";
@@ -15,7 +16,7 @@ import UserSession from "./components/RightPane/UserSession";
 import NavBar from "./components/RightPane/NavBar";
 
 export default function Home() {
-  const [leftComponent, setLeftComponent] = useState("LeaderBoard");
+  const [leftComponent, setLeftComponent] = useState("Welcome");
   const [rightComponent, setRightComponent] = useState("Join");
 
   const [quizSettings, setQuizSettings] = useState({
@@ -57,6 +58,15 @@ export default function Home() {
             setLeftComponent={setLeftComponent}
           />
         );
+
+      case "Welcome":
+        return (
+          <Welcome
+          setRightComponent={setRightComponent}
+          setLeftComponent={setLeftComponent}
+          />
+        );
+
       default:
         return null;
     }
