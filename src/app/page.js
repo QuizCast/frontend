@@ -14,7 +14,7 @@ import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import UserSession from "./components/RightPane/UserSession";
 
 export default function Home() {
-  const [leftComponent, setLeftComponent] = useState("LeaderBoard");
+  const [leftComponent, setLeftComponent] = useState(null);
   const [rightComponent, setRightComponent] = useState("Join");
 
   const [quizSettings, setQuizSettings] = useState({
