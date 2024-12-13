@@ -22,7 +22,7 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="logo2.png" className="h-8" alt="Flowbite Logo" />
           <span className="hidden sm:block max-w-screen-xl self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            Quiz
+          QuizCast
             </span>
 
         </a>
