@@ -13,6 +13,7 @@ import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
 import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import NavBar from "./components/RightPane/NavBar";
+import AboutUs from "./components/RightPane/AboutUs";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("Welcome");
@@ -48,6 +49,13 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
+      case "AboutUs":
+        return(
+          <AboutUs
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       case "SignUp":
         return (
           <SignUp
@@ -191,7 +199,11 @@ export default function Home() {
           </div>
   
           {/* Right Half */}
+<<<<<<< HEAD
           <div className="w-full lg:w-3/5 h-full lg:h-auto flex flex-col">
+=======
+          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+>>>>>>> 17bb743f446e29cabe7cc18387358f64c5832233
             {/* Top Navbar */}
             <div className="w-full h-[10%] flex items-start justify-between p-4">
               <NavBar

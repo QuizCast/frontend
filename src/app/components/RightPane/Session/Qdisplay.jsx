@@ -104,7 +104,6 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
     dispatch(cleanQuestions());
     dispatch(removeRoom());
     setRightComponent("Join");
-    setLeftComponent("Welcome");
   };
 
   if (quizCompleted) {
