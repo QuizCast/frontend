@@ -9,14 +9,14 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const checkCredentials = async (e) => {
-    e.preventDefault(); // Prevent form submission default behavior
-
+    e.preventDefault(); 
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.login}`;
 
     try {
       const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
+          accept: "application/json",
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
@@ -25,19 +25,16 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
         }),
       });
 
-      // Check for successful response
+      const responseData = await response.json();
+
+
       if (response.ok) {
-        const responseData = await response.json();
-        console.log(responseData); // Log the response for debugging or further processing
         setLeftComponent("LeaderBoard");
-        setRightComponent("Questions");
+        setRightComponent("Qsettings");
       } else {
-        const errorData = await response.json(); // Log error details if available
-        console.error("Error details:", errorData);
         setErrorMessage("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      console.error("Network or unexpected error:", error);
       setErrorMessage("An error occurred. Please try again.");
     }
   };
@@ -101,8 +98,8 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           </div>
         </form>
         <a className="flex p-4">
-      <label  onClick={() => setRightComponent("ReceiveMsg")}>
-        recevie
+      <label  onClick={() => setRightComponent("BroadCast")}>
+        Broadcast
         </label>
       </a>
       <a className="flex p-4">

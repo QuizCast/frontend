@@ -22,6 +22,31 @@ export default function Home() {
     time: 10
   });
 
+  // const [sessionStarted, setSessionStarted] = useState(false); // Track session status
+
+  // const renderLeftComponent = () => {
+  //   if (sessionStarted) {
+  //     return (
+  //       <LeaderBoard
+  //         setRightComponent={setRightComponent}
+  //         setLeftComponent={setLeftComponent}
+  //       />
+  //     );
+  //   }
+
+  //   switch (leftComponent) {
+  //     case "LeaderBoard":
+  //       return (
+  //         <LeaderBoard
+  //           setRightComponent={setRightComponent}
+  //           setLeftComponent={setLeftComponent}
+  //         />
+  //       );
+  //     default:
+  //       return null;
+  //   }
+  // };
+
   const renderLeftComponent = () => {
     switch (leftComponent) {
       case "LeaderBoard":
@@ -99,6 +124,7 @@ export default function Home() {
                 time={quizSettings.time}
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}
+                //startSession={() => setSessionStarted(true)}
               />
             );
 
