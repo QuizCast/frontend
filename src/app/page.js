@@ -64,13 +64,6 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
-      case "NavBar":
-        return (
-          <NavBar
-            setRightComponent={setRightComponent}
-            setLeftComponent={setLeftComponent}
-          />
-        );
       case "SignUp":
         return (
           <SignUp
@@ -113,39 +106,39 @@ export default function Home() {
             setLeftComponent={setLeftComponent}
           />
         );
-        case "Qsettings":
-          return (
-            <Qsettings
-              setRightComponent={(component, settings) => {
-                setRightComponent(component);
-                if (settings) {
-                  setQuizSettings(settings);
-                }
-              }}
-              setLeftComponent={setLeftComponent}
-            />
-          );
-          case "EnteredQuiz":
-            return (
-              <EnteredQuiz
-                count={quizSettings.count}
-                time={quizSettings.time}
-                setRightComponent={setRightComponent}
-                setLeftComponent={setLeftComponent}
-                //startSession={() => setSessionStarted(true)}
-              />
-            );
+      case "Qsettings":
+        return (
+          <Qsettings
+            setRightComponent={(component, settings) => {
+              setRightComponent(component);
+              if (settings) {
+                setQuizSettings(settings);
+              }
+            }}
+            setLeftComponent={setLeftComponent}
+          />
+        );
+      case "EnteredQuiz":
+        return (
+          <EnteredQuiz
+            count={quizSettings.count}
+            time={quizSettings.time}
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+            //startSession={() => setSessionStarted(true)}
+          />
+        );
 
-          case "Qdisplay":
-              return (
-                <Qdisplay
-                  setRightComponent={setRightComponent}
-                  setLeftComponent={setLeftComponent}
-                />
-            );
+      case "Qdisplay":
+        return (
+          <Qdisplay
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       default:
         return (
-          <Login
+          <Join
             setRightComponent={setRightComponent}
             setLeftComponent={setLeftComponent}
           />
@@ -173,46 +166,51 @@ export default function Home() {
         <li></li>
         <li></li>
       </ul>
-  
-{/* Large Floating Card */}
-<div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
-  <div className="flex h-full">
-    {/* Left Half */}
-    <div
-      className="w-2/5 h-full flex items-center justify-center relative rounded-bl-2xl rounded-tl-2xl"
-      style={{
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        maxHeight: "100%", // Prevent overflow
-        overflow: "hidden", // Optional: Control overflow behavior
-      }}
-    >
-      <div className="absolute inset-0 z-0">
-        <div className="area">
-          <ul className="circles">
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
-        </div>
-      </div>
-      <div className="z-10 block w-4/5 h-full flex items-center justify-center">{renderLeftComponent()}</div>
-    </div>
 
-    {/* Right Half */}
-    <div className="w-3/5 h-full flex flex-col">
-      {/* Top Navbar */}
-      
-      <div className="w-full h-[10%] flex items-start justify-between p-4">
-      <NavBar></NavBar>
-        {/* <a className="z-50 flex p-4" onClick={() => setRightComponent("Join")}>
+      {/* Large Floating Card */}
+      <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
+        <div className="flex h-full">
+          {/* Left Half */}
+          <div
+            className="w-2/5 h-full flex items-center justify-center relative rounded-bl-2xl rounded-tl-2xl"
+            style={{
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              maxHeight: "100%", // Prevent overflow
+              overflow: "hidden", // Optional: Control overflow behavior
+            }}
+          >
+            <div className="absolute inset-0 z-0">
+              <div className="area">
+                <ul className="circles">
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                  <li></li>
+                </ul>
+              </div>
+            </div>
+            <div className="z-10 block w-4/5 h-full flex items-center justify-center">
+              {renderLeftComponent()}
+            </div>
+          </div>
+
+          {/* Right Half */}
+          <div className="w-3/5 h-full flex flex-col">
+            {/* Top Navbar */}
+
+            <div className="w-full h-[10%] flex items-start justify-between p-4">
+              <NavBar
+                setRightComponent={setRightComponent}
+                setLeftComponent={setLeftComponent}
+              />
+              {/* <a className="z-50 flex p-4" onClick={() => setRightComponent("Join")}>
           <label>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -230,22 +228,21 @@ export default function Home() {
             </svg>
           </label>
         </a> */}
-      </div>
+            </div>
 
-      {/* Content Area */}
-      <div
-        className="flex-grow flex items-center justify-center p-1"
-        style={{
-          maxHeight: "90%", // Adjust to leave space for the navbar
-          overflow: "auto", // Optional: Allows scrolling if content exceeds height
-        }}
-      >
-        {renderRightComponent()}
+            {/* Content Area */}
+            <div
+              className="flex-grow flex items-center justify-center p-1"
+              style={{
+                maxHeight: "90%", // Adjust to leave space for the navbar
+                overflow: "auto", // Optional: Allows scrolling if content exceeds height
+              }}
+            >
+              {renderRightComponent()}
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
-
 
       {/* Footer */}
       <footer className="w-full p-1 text-center">
