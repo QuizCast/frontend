@@ -33,7 +33,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
 
       if (response.ok) {
         dispatch(setUser(responseData));
-        setLeftComponent("LeaderBoard");
+        setLeftComponent(null);
         setRightComponent("Qsettings");
       } else {
         setErrorMessage("Invalid credentials. Please try again.");
