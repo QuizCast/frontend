@@ -10,7 +10,10 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
 
   const renderJoin = () => {
     setRightComponent("Join");
-    console.log("Join");
+  };
+
+  const renderAbout = () => {
+    setRightComponent("AboutUs");
   };
 
   return (
@@ -67,7 +70,10 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
               </a>
             </li>
             <li>
-              <a className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer">
+              <a 
+              className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer"
+              onClick={() => renderAbout()}
+              >
                 About
               </a>
             </li>

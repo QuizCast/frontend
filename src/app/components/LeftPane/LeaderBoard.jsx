@@ -35,6 +35,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     } else if (payload.eventType === "DELETE") {
       console.log("Participant Deleted");
       dispatch(cleanLeaderboard());
+      setLeftComponent("Welcome");
     }
   };
 
