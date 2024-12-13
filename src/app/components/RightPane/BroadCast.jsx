@@ -55,7 +55,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
 
       if (response.ok) {
         setRightComponent("Qsettings");
-        setLeftComponent(null); // Hide LeaderBoard
+        setLeftComponent("Welcome"); // Hide LeaderBoard
       } else {
         setErrorMessage("Invalid credentials. Please try again.");
       }
