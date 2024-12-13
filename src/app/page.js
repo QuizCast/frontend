@@ -150,13 +150,18 @@ export default function Home() {
         <li></li>
         <li></li>
       </ul>
-
+  
       {/* Large Floating Card */}
       <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
-        <div className="flex h-full">
+        <div
+          className="flex flex-col lg:flex-row h-full"
+          style={{
+            maxHeight: "100%", // Prevent overflow
+          }}
+        >
           {/* Left Half */}
           <div
-            className="w-2/5 h-full flex items-center justify-center relative rounded-bl-2xl rounded-tl-2xl"
+            className="w-full lg:w-2/5 h-full lg:h-auto flex items-center justify-center relative rounded-t-2xl lg:rounded-bl-2xl lg:rounded-tl-2xl"
             style={{
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -184,36 +189,17 @@ export default function Home() {
               {renderLeftComponent()}
             </div>
           </div>
-
+  
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col">
+          <div className="w-full lg:w-3/5 h-full lg:h-auto flex flex-col">
             {/* Top Navbar */}
-
             <div className="w-full h-[10%] flex items-start justify-between p-4">
               <NavBar
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}
               />
-              {/* <a className="z-50 flex p-4" onClick={() => setRightComponent("Join")}>
-          <label>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="size-6"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
-              />
-            </svg>
-          </label>
-        </a> */}
             </div>
-
+  
             {/* Content Area */}
             <div
               className="flex-grow flex items-center justify-center p-1"
@@ -227,7 +213,7 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+  
       {/* Footer */}
       <footer className="w-full p-1 text-center">
         <p className="text-slate-50 font-small font-bold">
@@ -237,4 +223,6 @@ export default function Home() {
       </footer>
     </div>
   );
+  
+  
 }
