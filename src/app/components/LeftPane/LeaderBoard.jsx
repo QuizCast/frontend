@@ -42,7 +42,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     .channel("room1")
     .on(
       "postgres_changes",
-      { event: "*", schema: "public", table: "participants" },
+      { event: "*", schema: "public", table: process.env.NEXT_PUBLIC_DB_TABLE },
       (payload) => {
         leaderboardUpdate(payload);
       }
