@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API_CONFIG from "../API";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/store/Slices/userSlice";
@@ -10,10 +10,18 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-  
+
+  // Redirect if user is already logged in
+  useEffect(() => {
+    if (user) {
+      setRightComponent("Qsettings");
+    }
+  }, [user, setRightComponent]);
+
   const checkCredentials = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.login}`;
 
     try {
@@ -24,7 +32,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email, 
+          email,
           password,
         }),
       });
@@ -45,7 +53,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
 
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
-      <div className="relative  rounded-lg border-2">
+      <div className="relative rounded-lg border-2">
         <form className="space-y-6" onSubmit={checkCredentials}>
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
@@ -101,17 +109,6 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
             </a>
           </div>
         </form>
-        <a className="flex p-4">
-      <label  onClick={() => setRightComponent("BroadCast")}>
-        Broadcast
-        </label>
-      </a>
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Qsettings")}>
-       questions
-
-        </label>
-      </a>
       </div>
     </div>
   );
