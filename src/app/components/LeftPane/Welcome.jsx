@@ -8,14 +8,13 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
         {/* Logo and Title */}
         <a
           href="#"
-          className="flex flex-col items-center space-y-2 md:space-y-0 md:flex-row md:space-x-3 rtl:space-x-reverse"
+          className="flex flex-col items-center space-y-2 md:space-y-0  md:space-x-3 rtl:space-x-reverse"
         >
           <img
             src="logo2.png"
             className="h-16 md:h-20 lg:h-24"
             alt="Quiz Logo"
           />
-
           <span className="text-2xl md:text-3xl lg:text-4xl font-semibold whitespace-nowrap dark:text-white">
           QuizCast
           </span>
@@ -33,7 +32,7 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
         <div className="flex justify-center">
           <a
             href="#"
-            className="inline-flex items-center py-2.5 px-5 text-base font-medium text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+            className="inline-flex items-center py-2.5 px-5 text-base font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-950 focus:ring-4 focus:ring-blue-300 "
           >
             Read more
             <svg
