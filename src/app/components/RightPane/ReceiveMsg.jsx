@@ -2,13 +2,16 @@
 
 import React, { useEffect, useState } from "react";
 import useSupabase from "@/app/hooks/useSupabase";
+import { useSelector } from "react-redux";
 
 const ReceiveMsg = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const [message, setMessage] = useState(null); // State to store the received message
+  
+  const room_key = useSelector((state) => state.participant.Participant["room_key"]);
 
   useEffect(() => {
-    const channel = supabase.channel("room1");
+    const channel = supabase.channel(room_key);
 
     // Listen for broadcast messages
     channel.on("broadcast", { event: "cursor-pos" }, (payload) => {

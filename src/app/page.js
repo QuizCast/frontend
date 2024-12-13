@@ -10,6 +10,7 @@ import ReceiveMsg from "./components/RightPane/ReceiveMsg";
 import RoomKey from "./components/RightPane/RoomKey";
 import Qsettings from "./components/RightPane/Questions/Qsettings";
 import EnteredQuiz from "./components/RightPane/Questions/EnteredQuiz";
+import Qdisplay from "./components/RightPane/Session/Qdisplay";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("LeaderBoard");
@@ -17,7 +18,7 @@ export default function Home() {
 
   const [quizSettings, setQuizSettings] = useState({
     count: 3,
-    time: 10
+    time: 10,
   });
 
   // const [sessionStarted, setSessionStarted] = useState(false); // Track session status
@@ -125,8 +126,21 @@ export default function Home() {
                 //startSession={() => setSessionStarted(true)}
               />
             );
+
+          case "Qdisplay":
+              return (
+                <Qdisplay
+                  setRightComponent={setRightComponent}
+                  setLeftComponent={setLeftComponent}
+                />
+            );
       default:
-        return <Login />;
+        return (
+          <Login
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
     }
   };
 
@@ -138,8 +152,21 @@ export default function Home() {
         backgroundPosition: "center",
       }}
     >
+    <ul className="circles">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  
       {/* Large Floating Card */}
-      <div className="w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl ">
+      <div className="z-50 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl ">
         <div className="flex h-full">
           {/* Left Half */}
           <div
@@ -169,7 +196,25 @@ export default function Home() {
           </div>
 
           {/* Right Half */}
-          <div className="border-2 w-3/5 h-full flex items-center justify-center">
+          <div className="z-50 block border-2 w-3/5 h-full flex items-center justify-center">
+          <a className="flex p-4 position-1" onClick={() => setRightComponent("Join")}>
+        <label>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="size-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6.75 15.75 3 12m0 0 3.75-3.75M3 12h18"
+            />
+          </svg>
+        </label>
+      </a>
             {renderRightComponent()}
           </div>
         </div>
@@ -178,7 +223,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full py-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by {" "}
+          This is created by{" "}
           <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
         </p>
       </footer>
