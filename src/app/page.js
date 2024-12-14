@@ -175,7 +175,7 @@ export default function Home() {
 
       {/* Large Floating Card */}
       <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
-        {error && message && <ErrorNotify errorMsg={message} />}
+        {error && message && <ErrorNotify errorMsg={message}/>}
         {!error && message && <SuccessNotify successMsg={message} />}
         <div className="flex h-full">
           {/* Left Half */}
