@@ -202,7 +202,7 @@ export default function Home() {
           </div>
   
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col">
+          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
             {/* Top Navbar */}
             <div className="w-full h-[10%] flex items-start justify-between p-4">
               <NavBar
