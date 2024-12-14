@@ -98,7 +98,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
                 <span className="min-w-30 text-sm font-medium text-blue-700 dark:text-white">
                   {participant.originalScore} {/* Display original score */}
                 </span>
-                <div className="w-full max-w-[8rem] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full max-w-[8rem]  rounded-full h-2.5 dark:bg-gray-700">
                   <div
                     className="bg-blue-600 h-2.5 rounded-full"
                     style={{ width: `${participant.scaledScore}%` }} // Use the scaled score for the graph
