@@ -41,26 +41,34 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
     return () => clearInterval(timer);
   }, [currentQuestionIndex, questions, quizCompleted]);
 
+  //logic
   const handleSubmitAnswer = async (isTimeOut = false) => {
     if (!isTimeOut && !selectedAnswer) return;
-
+  
     const currentQuestion = questions[0][currentQuestionIndex];
+    const totalTime = currentQuestion.time;
+    const timeTaken = totalTime - timeLeft; // Calculate time taken to answer
+  
     const isCorrect = !isTimeOut && selectedAnswer === currentQuestion.correct_answer;
-
-    const pointsEarned = isCorrect ? 10 : 0;
-    setScore((prev) => prev + pointsEarned);
-
+  
+    // Updated scoring logic
+    const pointsEarned = isCorrect ? Math.round(100 * (1 - timeTaken / totalTime)) : 0;
+  
+    const newScore = score + pointsEarned; // Explicitly calculate the new score
+  
     const payload = {
       id: participant.id,
       room_key: participant.room_key,
       name: participant.name,
-      score: score + pointsEarned,
+      score: newScore, // Use the calculated score
     };
-
+  
     try {
-      await submitScore(payload);
+      await submitScore(payload); // Submit the calculated score
+      setScore(newScore); // Update the score state after submission
+  
       setAnswerSubmitted(true);
-
+  
       setTimeout(() => {
         if (currentQuestionIndex < questions[0].length - 1) {
           goToNextQuestion();
@@ -72,6 +80,7 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
       setError("Failed to submit score. Please try again.");
     }
   };
+  
 
   const submitScore = async (payload) => {
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.updateScore}`;
@@ -108,12 +117,12 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
 
   if (quizCompleted) {
     return (
-      <div className="text-center p-6 bg-gray-100 rounded-lg">
+      <div className="text-center p-6  rounded-lg">
         <h2 className="text-2xl font-bold mb-4">Quiz Completed!</h2>
         <p className="text-xl">Your Total Score: {score}</p>
         <button
           onClick={() => resetParticipant()}
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+          className="ok-border-1 mt-4 px-2 py-2 bg-slate-950  text-white rounded-lg hover:bg-green-400 transition"
         >
           Return
         </button>
@@ -172,9 +181,9 @@ const Qdisplay = ({ setRightComponent, setLeftComponent }) => {
         </ul>
 
         <button
-          onClick={() => handleSubmitAnswer()}
           disabled={!selectedAnswer || answerSubmitted}
           className="mt-6 w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-lg disabled:opacity-50"
+          onClick={() => handleSubmitAnswer()}
         >
           Submit Answer
         </button>
