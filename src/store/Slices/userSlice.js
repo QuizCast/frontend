@@ -2,13 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     user: null,
-    Questions: [
-        {
-            question: "What is the capital of France?",
-            answers: ["Paris", "London", "Berlin", "Madrid"],
-            correct_answer: "Paris", // Index of the correct option
-        },
-    ],
+    Questions: [],
 };
 
 
@@ -17,6 +11,12 @@ const userSlice = createSlice({
     initialState,
     reducers: {
         setUser: (state, action) => {
+            state.user = action.payload;
+        },
+        cleanUser: (state) => {
+            state.user = null;
+        },
+        updateUser: (state, action) => {
             state.user = action.payload;
         },
         setQuestions: (state, action) => {
@@ -33,6 +33,6 @@ const userSlice = createSlice({
     },
 });
 
-export const { setUser, setQuestions, removeQuestions, cleanQuestions } = userSlice.actions;
+export const { setUser, cleanUser, setQuestions, removeQuestions, cleanQuestions, updateUser } = userSlice.actions;
 
 export default userSlice.reducer;
