@@ -228,12 +228,10 @@ export default function Home() {
       {/* Footer */}
       <footer className="w-full p-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by{" "}
-          <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
+        © 2024{" "}
+          <span className="font-semibold text-yellow-100"> Team Vertex</span> All Rights Reserved.
         </p>
       </footer>
     </div>
   );
-  
-  
 }
