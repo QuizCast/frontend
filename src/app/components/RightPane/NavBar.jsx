@@ -12,18 +12,22 @@ const NavBar = ({ setRightComponent, setLeftComponent }) => {
 
   const renderJoin = () => {
     setRightComponent("Join");
+    setLeftComponent("Welcome");
   };
 
   const renderAbout = () => {
     setRightComponent("AboutUs");
+    setLeftComponent("Welcome");
   };
 
   const renderNewQuiz = () => {
     setRightComponent("Qsettings");
+    setLeftComponent("Welcome");
   };
 
   const renderHistory = () => {
     setRightComponent("AvailableQuiz");
+    setLeftComponent("Welcome");
   };
 
   return (

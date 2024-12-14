@@ -17,8 +17,7 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   // Redirect if user is already logged in
   useEffect(() => {
     if (user) {
-      // setRightComponent("Qsettings");
-      setRightComponent("AvailableQuiz");
+      setRightComponent("Qsettings");
     }
   }, [user, setRightComponent]);
 

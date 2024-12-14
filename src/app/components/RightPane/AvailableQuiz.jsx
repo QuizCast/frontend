@@ -43,7 +43,7 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
 
   const setQuiz = (room_key) => {
     setLeftComponent("LeaderBoard");
-    dispatch(setRoom(room_key));
+    dispatch(setRoom(room_key.toString()));
     setRightComponent("BroadCast");
   };
 
