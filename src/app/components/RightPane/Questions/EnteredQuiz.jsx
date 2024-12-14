@@ -5,12 +5,7 @@ import API_CONFIG from "../../API";
 import { useSelector, useDispatch } from "react-redux";
 import { setRoom } from "@/store/Slices/roomSlice";
 
-const EnteredQuiz = ({ 
-  count, 
-  time, 
-  setRightComponent, 
-  setLeftComponent 
-}) => {
+const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
   const [questions, setQuestions] = useState(
     Array.from({ length: count }, () => ({
       question: "",
@@ -88,7 +83,8 @@ const EnteredQuiz = ({
 
   const handleCorrectAnswerChange = (qIndex, optIndex) => {
     const updatedQuestions = [...questions];
-    updatedQuestions[qIndex].correct_answer = updatedQuestions[qIndex].answers[optIndex];
+    updatedQuestions[qIndex].correct_answer =
+      updatedQuestions[qIndex].answers[optIndex];
     setQuestions(updatedQuestions);
   };
 
@@ -115,10 +111,10 @@ const EnteredQuiz = ({
       });
 
       const responseData = await response.json();
-      
+
       if (response.ok) {
         dispatch(setRoom(responseData["room_key"]));
-        setRightComponent("BroadCast"); 
+        setRightComponent("BroadCast");
         setLeftComponent("LeaderBoard");
       } else {
         alert("Failed to create quiz. Please try again.");
@@ -155,7 +151,10 @@ const EnteredQuiz = ({
               )}
             </div>
             {q.answers.map((option, optIndex) => (
-              <div key={optIndex} className="mt-2 flex flex-wrap items-center justify-between">
+              <div
+                key={optIndex}
+                className="mt-2 flex flex-wrap items-center justify-between"
+              >
                 <label className="ml-2">
                   <input
                     type="radio"
@@ -167,7 +166,9 @@ const EnteredQuiz = ({
                 <input
                   type="text"
                   value={option}
-                  onChange={(e) => handleOptionChange(qIndex, optIndex, e.target.value)}
+                  onChange={(e) =>
+                    handleOptionChange(qIndex, optIndex, e.target.value)
+                  }
                   className="bg-gray-50 border border-gray-300 text-sm rounded-lg block w-[90%] p-2.5"
                   placeholder={`Option ${optIndex + 1}`}
                   required

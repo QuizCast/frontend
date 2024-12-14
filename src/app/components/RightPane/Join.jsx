@@ -1,6 +1,8 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { cleanQuestions, removeParticipant } from "@/store/Slices/participantSlice";
+import { removeRoom } from "@/store/Slices/roomSlice";
+import { cleanLeaderboard } from "@/store/Slices/leaderBoardSlice";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
   const dispatch = useDispatch();
@@ -8,6 +10,8 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
   const sendToWaiting = () => {
     dispatch(cleanQuestions());
     dispatch(removeParticipant());
+    dispatch(removeRoom());
+    dispatch(cleanLeaderboard());
     setRightComponent("RoomKey");
   };
 
