@@ -51,10 +51,11 @@ function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) 
         setError(true);
 
         setTimeout(() => {
-          setMessage("");
+          setMessage(null);
           setError(false);
-        }, 3000);
+         }, 10000);
       }
+
     } catch (error) {
       console.log("Error: ", error);
     }

@@ -2,6 +2,20 @@ import React, { useState } from "react";
 
 const SuccessNotify = ({ successMsg }) => {
   const [visible, setVisible] = useState(true); // State to control visibility
+  const [timer, setTimer] = useState(10); // Countdown timer (6 seconds)
+
+  // Countdown and auto-delete logic
+  useEffect(() => {
+    if (timer > 0) {
+      const interval = setInterval(() => {
+        setTimer((prev) => prev - 1);
+      }, 1000);
+
+      return () => clearInterval(interval); // Cleanup on component unmount or re-render
+    } else {
+      setVisible(false); // Auto-delete after 6 seconds
+    }
+  }, [timer]);
 
   if (!visible) {
     return null; // Don't render if not visible
@@ -10,7 +24,7 @@ const SuccessNotify = ({ successMsg }) => {
   return (
     <div
       id="toast-success"
-      className="fixed top-8 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 z-50"
+      className="ok-border-1 fixed top-8 left-1/2 transform -translate-x-1/2 flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800 z-50"
       role="alert"
     >
       <div className="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
@@ -24,6 +38,10 @@ const SuccessNotify = ({ successMsg }) => {
           <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
         </svg>
         <span className="sr-only">Check icon</span>
+      </div>
+      <div className="ms-3 text-sm font-normal">
+        {errorMsg}{" "}
+        <span className="text-xs text-gray-400">({timer}s remaining)</span>
       </div>
       <div className="ms-3 text-sm font-normal">{successMsg}</div>
       <button
