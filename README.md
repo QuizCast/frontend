@@ -1,3 +1,5 @@
+![logo](https://github.com/user-attachments/assets/4d84857a-fa96-436c-a81c-0dd26a8a1aa7)
+
 # QuizCast Frontend
 
 Welcome to the **QuizCast Frontend** repository! This frontend is built using **Next.js**, providing a sleek and intuitive interface for users to create, join, and participate in quizzes. It integrates with **Supabase** for real-time updates, authentication, and data broadcasting, making the quiz experience seamless and engaging. The UI is styled with **Tailwind CSS** and **Flowbite**, ensuring a modern and responsive design.
