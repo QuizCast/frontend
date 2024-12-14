@@ -3,7 +3,8 @@ import React from "react";
 const Join = ({ setRightComponent, setLeftComponent }) => {
   return (
     <>
-      <div className="w-full max-w-xs p-8">
+    <div className="w-full max-w-xs md:max-w-sm p-4 md:p-8">
+
         <div className="flex items-center justify-center">
           {/* <img
             src="logo.png"
