@@ -52,7 +52,6 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
           </a>
         </div>
       </div>
-    </div>
   );
 };
 
