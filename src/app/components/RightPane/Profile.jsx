@@ -98,8 +98,8 @@ const Profile = () => {
   };
 
   return (
-    <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <div className="flex flex-col items-center pb-10 pt-4">
+    <div className="max-w-sm bg-white relative p-4 w-full max-w-md max-h-full">
+      <div className="relative rounded-lg border-2 flex flex-col items-center pb-10 pt-4">
         <img
           className="w-24 h-24 mb-3 rounded-full shadow-lg"
           src={avatarUrl || user.img_url || "profile2.png"} // Provide a fallback avatar URL
