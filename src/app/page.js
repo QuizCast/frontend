@@ -15,10 +15,15 @@ import Qdisplay from "./components/RightPane/Session/Qdisplay";
 import NavBar from "./components/RightPane/NavBar";
 import AboutUs from "./components/RightPane/AboutUs";
 import Profile from "./components/RightPane/Profile";
+import ErrorNotify from "./components/Notification/ErrorNotify";
+import SuccessNotify from "./components/Notification/SuccessNotify";
+import AvailableQuiz from "./components/RightPane/AvailableQuiz";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("Welcome");
   const [rightComponent, setRightComponent] = useState("Join");
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState(false);
 
   const [quizSettings, setQuizSettings] = useState({
     count: 3,
@@ -50,8 +55,15 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
+      case "AvailableQuiz":
+        return (
+          <AvailableQuiz
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       case "AboutUs":
-        return(
+        return (
           <AboutUs
             setRightComponent={setRightComponent}
             setLeftComponent={setLeftComponent}
@@ -104,6 +116,8 @@ export default function Home() {
           <RoomKey
             setRightComponent={setRightComponent}
             setLeftComponent={setLeftComponent}
+            setMessage={setMessage}
+            setError={setError}
           />
         );
       case "Qsettings":
@@ -166,9 +180,11 @@ export default function Home() {
         <li></li>
         <li></li>
       </ul>
-  
+
       {/* Large Floating Card */}
       <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
+        {error && message && <ErrorNotify errorMsg={message}/>}
+        {!error && message && <SuccessNotify successMsg={message} />}
         <div className="flex h-full">
           {/* Left Half */}
           <div
@@ -200,17 +216,17 @@ export default function Home() {
               {renderLeftComponent()}
             </div>
           </div>
-  
+
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col">
+          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
             {/* Top Navbar */}
-            <div className="w-full h-[10%] flex items-start justify-between p-4">
+            <div className="w-full  flex items-start justify-between p-4">
               <NavBar
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}
               />
             </div>
-  
+
             {/* Content Area */}
             <div
               className="flex-grow flex items-center justify-center p-1"
@@ -224,12 +240,13 @@ export default function Home() {
           </div>
         </div>
       </div>
-  
+
       {/* Footer */}
       <footer className="w-full p-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-        © 2024{" "}
-          <span className="font-semibold text-yellow-100"> Team Vertex</span> All Rights Reserved.
+          © 2024{" "}
+          <span className="font-semibold text-yellow-100"> Team Vertex</span>{" "}
+          All Rights Reserved.
         </p>
       </footer>
     </div>

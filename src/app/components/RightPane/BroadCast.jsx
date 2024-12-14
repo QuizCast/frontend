@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import useSupabase from "@/app/hooks/useSupabase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cleanLeaderboard } from "@/store/Slices/leaderBoardSlice";
 import API_CONFIG from "../API";
 
 const BroadCast = ({ setRightComponent, setLeftComponent }) => {
@@ -12,6 +13,8 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const room_key = useSelector((state) => state.room_key.room_key);
   const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
 
   const castMessage = (key) => {
     const channel = supabase.channel(key);
@@ -55,6 +58,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
       });
 
       if (response.ok) {
+        dispatch(cleanLeaderboard());
         setRightComponent("Qsettings");
         setLeftComponent("Welcome"); // Hide LeaderBoard
       } else {
@@ -73,7 +77,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
   };
 
   return (
-    <div className="p-6 max-w-lg mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
+    <div className="p-6 max-w-lg mx-auto bg-white rounded-lg border-2">
       {/* Room Key Display */}
       <div className="mb-6">
         <h2 className="text-lg font-bold text-gray-800 dark:text-white mb-2">
@@ -101,7 +105,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
     <li>
       <button
         type="submit"
-        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-green-200 rounded-lg cursor-pointer hover:bg-green-100 hover:text-green-900 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 dark:border-green-600"
+        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-green-200 rounded-lg cursor-pointer hover:bg-green-100 hover:text-green-900 focus:outline-none focus:ring-1 focus:ring-green-500"
         onClick={() => setMessage("Start")}
       >
         <div className="block">
@@ -126,7 +130,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
     <li>
       <button
         type="submit"
-        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 hover:text-blue-800 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-400 dark:border-blue-800"
+        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 hover:text-blue-800 dark:bg-blue-600 "
         onClick={() => setMessage("End")}
       >
         <div className="block">
@@ -151,7 +155,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
     <li>
       <button
         type="submit"
-        className="inline-flex items-center justify-between w-60 p-5 text-black bg-white border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 hover:text-red-900 dark:bg-gray-600 dark:text-white dark:hover:bg-red-300 dark:border-red-600"
+        className="inline-flex items-center justify-between w-60 p-5 text-black bg-white border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 hover:text-red-900 focus:outline-none focus:ring-1 focus:ring-red-500"
         onClick={() => deleteRoom()}
       >
         <div className="block">
