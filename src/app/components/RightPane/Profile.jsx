@@ -98,7 +98,7 @@ const Profile = () => {
   };
 
   return (
-    <div className="max-w-sm bg-white relative p-4 w-full max-w-md max-h-full">
+    <div className="bg-white relative p-4 w-full max-w-sm max-h-full">
       <div className="relative rounded-lg border-2 flex flex-col items-center pb-10 pt-4">
         <img
           className="w-24 h-24 mb-3 rounded-full shadow-lg"

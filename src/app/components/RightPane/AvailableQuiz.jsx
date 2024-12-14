@@ -56,7 +56,7 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
   }, []);
 
   return (
-    <div className="max-w-sm bg-white relative p-4 w-full max-w-md max-h-full">
+    <div className="bg-white relative p-4 w-full max-w-md max-h-full">
       <div className="relative rounded-lg border-2 flex flex-col items-center pb-10 pt-4">
     <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">

@@ -130,31 +130,6 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
     <li>
       <button
         type="submit"
-        className="inline-flex items-center justify-between w-full p-5 text-black bg-white border border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 hover:text-blue-800 dark:bg-blue-600 dark:text-white dark:hover:bg-blue-400 dark:border-blue-800"
-        onClick={() => setMessage("End")}
-      >
-        <div className="block">
-          <div className="w-full text-lg font-semibold">End Quiz</div>
-        </div>
-        <svg
-          className="w-4 h-4 text-gray-500 dark:text-gray-400"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 14 10"
-        >
-          <path
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M1 5h12m0 0L9 1m4 4L9 9"
-          />
-        </svg>
-      </button>
-    </li>
-    <li>
-      <button
-        type="submit"
         className="inline-flex items-center justify-between w-60 p-5 text-black bg-white border border-red-200 rounded-lg cursor-pointer hover:bg-red-100 hover:text-red-900 dark:bg-gray-600 dark:text-white dark:hover:bg-red-300 dark:border-red-600"
         onClick={() => deleteRoom()}
       >
