@@ -14,6 +14,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const dispatch = useDispatch();
   const scoreBoard = useSelector((state) => state.leaderBoard.leaderBoard);
+  const user = useSelector((state) => state.user.user);
 
   useEffect(() => {
     const channel = supabase

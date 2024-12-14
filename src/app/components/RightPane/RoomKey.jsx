@@ -4,12 +4,12 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setParticipant, setQuestions } from "@/store/Slices/participantSlice";
+import { setRoom } from "@/store/Slices/roomSlice";
 import API_CONFIG from "../API";
 
-function RoomKey({ setRightComponent, setLeftComponent }) {
+function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) {
   const [name, setName] = useState(""); // State to store the message
   const [quizKey, setQuizKey] = useState(""); // State to store the message
-  const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
 
   const dispatch = useDispatch();
 
@@ -31,7 +31,7 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
 
       const responseData = await response.json();
 
-      if (response.ok) {
+      if (response.status === 200) {
         const participant = {
           id: responseData["id"],
           name: name,
@@ -42,13 +42,15 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
 
         dispatch(setParticipant(participant));
         dispatch(setQuestions(questions));
+        dispatch(setRoom(quiz_key));
 
         setRightComponent("ReceiveMsg");
       } else {
-        setErrorMessage("Invalid credentials. Please try again.");
+        setMessage("Wrong Quiz room. Check the key and try again.");
+        setError(true);
       }
     } catch (error) {
-      setErrorMessage("An error occurred. Please try again.");
+      console.log("Error: ", error);
     }
   };
 
@@ -57,8 +59,6 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
 
     // recieve questions
     retrieveQuestions(name, quizKey);
-
-    setRightComponent("ReceiveMsg");
   };
 
   return (
