@@ -48,6 +48,11 @@ function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) 
       } else {
         setMessage("Wrong Quiz room. Check the key and try again.");
         setError(true);
+
+        setTimeout(() => {
+          setMessage("");
+          setError(false);
+        }, 3000);
       }
     } catch (error) {
       console.log("Error: ", error);

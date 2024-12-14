@@ -7,6 +7,7 @@ const API_CONFIG = {
     updateScore: "/quiz/updateScore",
     deleteRoom: "/quiz/deleteRoom",
     updateUser: "/user/update_user",
+    getQuizHistory: "/user/get_quizHistory/",
   };
   
   export default API_CONFIG;
