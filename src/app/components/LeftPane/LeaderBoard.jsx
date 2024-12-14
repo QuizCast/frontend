@@ -14,11 +14,11 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const dispatch = useDispatch();
   const scoreBoard = useSelector((state) => state.leaderBoard.leaderBoard);
-  const user = useSelector((state) => state.user.user);
+  const room_key = useSelector((state) => state.room_key.room_key);
 
   useEffect(() => {
     const channel = supabase
-      .channel("room1")
+      .channel(room_key)
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: process.env.NEXT_PUBLIC_DB_TABLE },
