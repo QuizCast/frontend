@@ -17,7 +17,7 @@ const Welcome = ({ setRightComponent }) => {
           Welcome!
         </h1>
         <p className="text-md md:text-lg lg:text-xl font-normal text-gray-900 dark:text-gray-400 mb-6">
-          "Quiz" is an innovative platform for scheduling online quiz competitions,
+          "QuizCast" is an innovative platform for scheduling online quiz competitions,
           offering real-time interaction and a seamless, engaging experience.
         </p>
         <div className="flex justify-center">

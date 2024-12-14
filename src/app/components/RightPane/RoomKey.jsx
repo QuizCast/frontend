@@ -10,10 +10,11 @@ import API_CONFIG from "../API";
 function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) {
   const [name, setName] = useState(""); // State to store the message
   const [quizKey, setQuizKey] = useState(""); // State to store the message
-
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const retrieveQuestions = async (name, quiz_key) => {
+    setIsLoading(true); // Show spinner
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.joinQiuz}`;
 
     try {
@@ -50,13 +51,17 @@ function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) 
         setError(true);
 
         setTimeout(() => {
-          setMessage("");
+          setMessage(null);
           setError(false);
-        }, 3000);
+         }, 10000);
       }
+
     } catch (error) {
       console.log("Error: ", error);
     }
+  finally {
+    setIsLoading(false); // Hide spinner
+  }
   };
 
   const handleSubmit = (e) => {
@@ -104,11 +109,15 @@ function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) 
               />
             </div>
             <button
-              type="submit"
-              className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            >
-              Join
-            </button>
+            type="submit"
+            className="flex justify-center w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+          >
+            {isLoading ? (
+              <div className=" animate-spin rounded-full h-4 w-4 border-t-4 border-blue-500 border-solid"></div>
+            ) : (
+              "Join"
+            )}
+          </button>
           </form>
         </div>
       </div>
