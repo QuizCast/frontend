@@ -204,7 +204,7 @@ export default function Home() {
           {/* Right Half */}
           <div className="w-3/5 h-full flex flex-col">
             {/* Top Navbar */}
-            <div className="w-full h-[10%] flex items-start justify-between p-4">
+            <div className="w-full  flex items-start justify-between p-4">
               <NavBar
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}

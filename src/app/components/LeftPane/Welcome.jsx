@@ -1,20 +1,20 @@
 import React from "react";
 
-const Welcome = ({ setRightComponent, setLeftComponent }) => {
-    return (
-        <div className="bg-glass-1 w-full p-4 rounded-lg md:p-6">
-            <div className="w-full p-4">
-            <a
-          className="flex items-center space-x-3 rtl:space-x-reverse"
+const Welcome = ({ setRightComponent }) => {
+  return (
+    <div className="bg-glass-1 w-full p-4 md:p-6 lg:p-8 rounded-lg">
+      <div className="flex flex-col items-center text-center">
+        <a
+          className="flex flex-col items-center space-y-2 md:space-y-0 md:space-x-3 rtl:space-x-reverse"
         >
           <img
             src="logo.png"
-            className="h-36"
-            alt="Flowbite Logo"
+            className="h-36 md:h-20 lg:h-24"
+            alt="Quiz Logo"
           />
         </a>
-            <h1 className="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-6">Welcome!</h1>
-            <p className="text-lg font-normal text-gray-900 dark:text-gray-400 mb-6">"QuizCast" is an innovative platform for scheduling online quiz competitions, offering real-time interaction and a seamless, engaging experience.</p>
+            <h1 className="overflaw-hidden text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-6">Welcome!</h1>
+            <p className="text-md md:text-lg lg:text-xl font-normal text-gray-900 dark:text-gray-400 mb-6">"QuizCast" is an innovative platform for scheduling online quiz competitions, offering real-time interaction and a seamless, engaging experience.</p>
             <a 
             className="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 cursor-pointer"
             onClick={() => setRightComponent("AboutUs")}
@@ -25,7 +25,9 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
                 </svg>
             </a>
             </div>
+
       </div>
+    </div>
   );
 };
 

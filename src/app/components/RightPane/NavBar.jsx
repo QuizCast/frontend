@@ -21,7 +21,7 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
       <div className="max-w-screen-xl flex flex-wrap items-center align-start justify-between mx-auto ">
           <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
 
-          <img src="logo.png" className="h-20" alt="Flowbite Logo" />
+          <img src="logo.png" className="h-16" alt="Flowbite Logo" />
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
