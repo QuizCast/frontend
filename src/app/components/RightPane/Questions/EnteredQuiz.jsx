@@ -11,11 +11,57 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
       question: "",
       answers: ["", "", "", ""],
       correct_answer: "", // Store the actual answer string
+      errors: {
+        question: "",
+        answers: ["", "", "", ""],
+        correct_answer: "",
+      },
     }))
   );
 
   const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateQuestion = (index) => {
+    const currentQuestion = questions[index];
+    const errors = { question: "", answers: ["", "", "", ""], correct_answer: "" };
+
+    if (!currentQuestion.question.trim()) {
+      errors.question = "Question cannot be empty.";
+    }
+
+    currentQuestion.answers.forEach((answer, i) => {
+      if (!answer.trim()) {
+        errors.answers[i] = `Option ${i + 1} cannot be empty.`;
+      }
+    });
+
+    if (!currentQuestion.correct_answer) {
+      errors.correct_answer = "A correct answer must be selected.";
+    }
+
+    return errors;
+  };
+
+  const validateAll = () => {
+    const updatedQuestions = questions.map((q, index) => {
+      return {
+        ...q,
+        errors: validateQuestion(index),
+      };
+    });
+
+    setQuestions(updatedQuestions);
+
+    // Check if any question has validation errors
+    return !updatedQuestions.some(
+      (q) =>
+        q.errors.question ||
+        q.errors.answers.some((error) => error) ||
+        q.errors.correct_answer
+    );
+  };
 
   const handleQuestionChange = (index, value) => {
     const updatedQuestions = [...questions];
@@ -27,11 +73,8 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
     const updatedQuestions = [...questions];
     updatedQuestions[qIndex].answers[optIndex] = value;
 
-    // Update the correct answer if the selected option changes
-    if (
-      updatedQuestions[qIndex].correct_answer ===
-      updatedQuestions[qIndex].answers[optIndex]
-    ) {
+    // Update the correct answer if it matches the changed option
+    if (updatedQuestions[qIndex].correct_answer === updatedQuestions[qIndex].answers[optIndex]) {
       updatedQuestions[qIndex].correct_answer = value;
     }
 
@@ -45,20 +88,24 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
     setQuestions(updatedQuestions);
   };
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const handleSubmit = async () => {
+    if (!validateAll()) {
+      alert("Please fix the errors before submitting.");
+      return;
+    }
+
     setIsSubmitting(true); // Set submitting state to true
     const END_POINT = process.env.NEXT_PUBLIC_BACKEND_URL + API_CONFIG.addQuiz;
+
     try {
       const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
+        body: JSON.stringify({ 
           user_id: user["user_id"],
-          time: time,
+          time: time, 
           questions: questions,
         }),
       });
@@ -99,6 +146,9 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
                 placeholder="Enter your question"
                 required
               />
+              {q.errors.question && (
+                <span className="text-red-500 text-sm">{q.errors.question}</span>
+              )}
             </div>
             {q.answers.map((option, optIndex) => (
               <div
@@ -123,14 +173,22 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
                   placeholder={`Option ${optIndex + 1}`}
                   required
                 />
+                {q.errors.answers[optIndex] && (
+                  <span className="text-red-500 text-sm">
+                    {q.errors.answers[optIndex]}
+                  </span>
+                )}
               </div>
             ))}
+            {q.errors.correct_answer && (
+              <span className="text-red-500 text-sm">{q.errors.correct_answer}</span>
+            )}
             <br />
           </div>
         ))}
         <div className="flex justify-between items-center">
-          <button
-            className=" flex p-2  bg-white border-slate-700 text-slate-700  rounded-lg "
+          <button 
+            className="flex p-2 bg-white border-slate-700 text-slate-700 rounded-lg"
             onClick={() => setRightComponent("Qsettings")}
           >
             <label className="cursor-pointer flex items-center">
@@ -140,7 +198,7 @@ const EnteredQuiz = ({ count, time, setRightComponent, setLeftComponent }) => {
                 viewBox="0 0 24 24"
                 strokeWidth={1.5}
                 stroke="currentColor"
-                className="w-5 "
+                className="w-5"
               >
                 <path
                   strokeLinecap="round"

@@ -37,7 +37,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
             if (payload.new.room_key !== parseInt(room_key)) return;
             console.log("Participant Updated");
             dispatch(
-              updateLeaderboard([
+              updateLeaderboard([ 
                 {
                   id: payload.new.id,
                   name: payload.new.name,
@@ -45,7 +45,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
                 },
               ])
             );
-          } 
+          }
           // else if (payload.eventType === "DELETE") {
           //   console.log("Participant Deleted");
           //   dispatch(cleanLeaderboard());
@@ -60,12 +60,14 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     };
   }, [supabase, dispatch, setLeftComponent]);
 
+  // Map scoreBoard and store both the original score and scaled score for the graph
   const sortedScoreBoard = scoreBoard
     .map((participant) => ({
       ...participant,
-      score: Math.min(100, Math.max(0, participant.score)), // Clamp score
+      originalScore: participant.score, // Store the original score
+      scaledScore: Math.min(100, Math.max(0, participant.score)), // Clamp the score for graph rendering
     }))
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.scaledScore - a.scaledScore); // Sort by scaled score for leaderboard
 
   const resetLeaderboard = () => {
     dispatch(cleanLeaderboard());
@@ -73,19 +75,13 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
 
   return (
     <div className="bg-glass-1 w-full p-4 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
-      <button type="button" className="bg-glass-1 p-3 text-sm text-slate-650 hover:text-slate-950" onClick={resetLeaderboard}>reset</button>
       <div className="w-full">
         <h2 className="font-bold text-lg text-slate-950 text-center">
           LEADER BOARD
         </h2>
-        <div className="mt-4 grid grid-cols-2 gap-2 sm:gap-4 text-center">
-          <span className="font-medium text-slate-500 ">
-            Participant
-          </span>
-          <span className="font-medium text-slate-500">
-            Score
-          </span>
-        </div>
+        {/* <div className="mt-4 grid flex justify-right sm:gap-4 text-center">
+          <span className="font-medium text-slate-500">Score</span>
+        </div> */}
         <div className="mt-4 space-y-6">
           {sortedScoreBoard.map((participant) => (
             <div
@@ -99,13 +95,13 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
                 </span>
               </div>
               <div className="flex flex-1 items-center ml-auto space-x-2">
-               <span className="min-w-30 text-sm font-medium text-blue-700 dark:text-white">
-               {participant.score}
-                </span> 
-                <div className="w-full max-w-[8rem] bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                <span className="min-w-30 text-sm font-medium text-blue-700 dark:text-white">
+                  {participant.originalScore} {/* Display original score */}
+                </span>
+                <div className="w-full max-w-[8rem]  rounded-full h-2.5 dark:bg-gray-700">
                   <div
                     className="bg-blue-600 h-2.5 rounded-full"
-                    style={{ width: `${participant.score}%` }}
+                    style={{ width: `${participant.scaledScore}%` }} // Use the scaled score for the graph
                   ></div>
                 </div>
               </div>
@@ -113,6 +109,14 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
           ))}
         </div>
       </div>
+      <br/>
+      <button
+        type="button"
+        className="bg-glass-1 w-full p-3 text-sm text-slate-650 hover:text-slate-950"
+        onClick={resetLeaderboard}
+      >
+        reset
+      </button>
     </div>
   );
 };
