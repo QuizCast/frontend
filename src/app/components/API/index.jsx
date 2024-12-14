@@ -6,6 +6,8 @@ const API_CONFIG = {
     joinQiuz: "/quiz/join",
     updateScore: "/quiz/updateScore",
     deleteRoom: "/quiz/deleteRoom",
+    updateUser: "/user/update_user",
+    getQuizHistory: "/user/get_quizHistory/",
   };
   
   export default API_CONFIG;

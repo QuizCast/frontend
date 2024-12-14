@@ -4,16 +4,17 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setParticipant, setQuestions } from "@/store/Slices/participantSlice";
+import { setRoom } from "@/store/Slices/roomSlice";
 import API_CONFIG from "../API";
 
-function RoomKey({ setRightComponent, setLeftComponent }) {
+function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) {
   const [name, setName] = useState(""); // State to store the message
   const [quizKey, setQuizKey] = useState(""); // State to store the message
-  const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
-
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useDispatch();
 
   const retrieveQuestions = async (name, quiz_key) => {
+    setIsLoading(true); // Show spinner
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.joinQiuz}`;
 
     try {
@@ -24,58 +25,55 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          room_key: Number(quiz_key), 
+          room_key: Number(quiz_key),
           name: name,
         }),
       });
 
       const responseData = await response.json();
 
-      if (response.ok) {
-        console.log(responseData);
-
+      if (response.status === 200) {
         const participant = {
           id: responseData["id"],
           name: name,
           room_key: responseData["room_key"].toString(),
-        }
+        };
 
         const questions = responseData["questions"];
 
         dispatch(setParticipant(participant));
         dispatch(setQuestions(questions));
+        dispatch(setRoom(quiz_key));
 
         setRightComponent("ReceiveMsg");
       } else {
-        setErrorMessage("Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      setErrorMessage("An error occurred. Please try again.");
-    }
-  };
+        setMessage("Wrong Quiz room. Check the key and try again.");
+        setError(true);
 
+        setTimeout(() => {
+          setMessage(null);
+          setError(false);
+         }, 10000);
+      }
+
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  finally {
+    setIsLoading(false); // Hide spinner
+  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, quizKey);
-
-
 
     // recieve questions
     retrieveQuestions(name, quizKey);
-
-    setRightComponent("ReceiveMsg");
   };
 
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
       <div className="relative  rounded-lg border-2">
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Qdisplay")}>
-       qdispaly
-
-        </label>
-      </a>
         <div className="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
           <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
             Join into a Session
@@ -112,9 +110,13 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
             </div>
             <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="flex justify-center w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Join
+            {isLoading ? (
+              <div className=" animate-spin rounded-full h-4 w-4 border-t-4 border-blue-500 border-solid"></div>
+            ) : (
+              "Join"
+            )}
           </button>
           </form>
         </div>

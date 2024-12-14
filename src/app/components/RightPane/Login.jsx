@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import API_CONFIG from "../API";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/store/Slices/userSlice";
@@ -9,43 +9,53 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
-  
+
+  // Redirect if user is already logged in
+  useEffect(() => {
+    if (user) {
+      setRightComponent("Qsettings");
+    }
+  }, [user, setRightComponent]);
+
   const checkCredentials = async (e) => {
-    e.preventDefault(); 
+    e.preventDefault();
+    setErrorMessage(""); // Clear previous errors
+    setIsLoading(true); // Show spinner
     const END_POINT = `${process.env.NEXT_PUBLIC_BACKEND_URL}${API_CONFIG.login}`;
 
     try {
       const response = await fetch(END_POINT, {
         method: "POST",
         headers: {
-          accept: "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          email, 
-          password,
-        }),
+        body: JSON.stringify({ email, password }),
       });
 
       const responseData = await response.json();
 
       if (response.ok) {
         dispatch(setUser(responseData));
-        setLeftComponent(null);
+        setLeftComponent("Welcome");
         setRightComponent("Qsettings");
       } else {
         setErrorMessage("Invalid credentials. Please try again.");
       }
     } catch (error) {
       setErrorMessage("An error occurred. Please try again.");
+    } finally {
+      setIsLoading(false); // Hide spinner
     }
   };
 
   return (
     <div className="relative p-4 w-full max-w-md max-h-full">
-      <div className="relative  rounded-lg border-2">
+      <div className="relative rounded-lg border-2">
         <form className="space-y-6" onSubmit={checkCredentials}>
           <h5 className="text-xl font-medium text-gray-900 dark:text-white">
             Sign in to our platform
@@ -87,9 +97,13 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
           )}
           <button
             type="submit"
-            className="w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="flex justify-center w-full text-white bg-blue-700 hover:bg-slate-950 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
-            Login to your account
+            {isLoading ? (
+              <div className=" animate-spin rounded-full h-4 w-4 border-t-4 border-blue-500 border-solid"></div>
+            ) : (
+              "Login to your account"
+            )}
           </button>
           <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
             Not registered?{" "}
@@ -101,17 +115,6 @@ const Login = ({ setRightComponent, setLeftComponent }) => {
             </a>
           </div>
         </form>
-        <a className="flex p-4">
-      <label  onClick={() => setRightComponent("BroadCast")}>
-        Broadcast
-        </label>
-      </a>
-      <a className="flex p-4">
-      <label  onClick={() => setRightComponent("Qsettings")}>
-       questions
-
-        </label>
-      </a>
       </div>
     </div>
   );
