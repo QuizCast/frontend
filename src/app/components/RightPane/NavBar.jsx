@@ -1,8 +1,10 @@
 import React, { use, useState } from "react";
 import UserSession from "./UserSession";
+import { useSelector } from "react-redux";
 
-const NavBar = ({setRightComponent, setLeftComponent}) => {
+const NavBar = ({ setRightComponent, setLeftComponent }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const user = useSelector((state) => state.user.user);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,11 +18,18 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
     setRightComponent("AboutUs");
   };
 
+  const renderNewQuiz = () => {
+    setRightComponent("Qsettings");
+  };
+
+  const renderHistory = () => {
+    setRightComponent("AvailableQuiz");
+  };
+
   return (
     <nav className="w-full z-20 ">
       <div className="max-w-screen-xl flex flex-wrap items-center align-start justify-between mx-auto ">
-          <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
-
+        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img src="logo.png" className="h-16" alt="Flowbite Logo" />
         </a>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
@@ -61,7 +70,7 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
           id="navbar-sticky"
         >
           <ul className="w-full flex flex-col p-4 md:p-0 mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
-          <li>
+            <li>
               <a
                 className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-gray-900 md:hover:text-blue-700 md:p-0 cursor-pointer"
                 onClick={() => renderJoin()}
@@ -70,13 +79,33 @@ const NavBar = ({setRightComponent, setLeftComponent}) => {
               </a>
             </li>
             <li>
-              <a 
-              className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer"
-              onClick={() => renderAbout()}
+              <a
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer"
+                onClick={() => renderAbout()}
               >
                 About
               </a>
             </li>
+            {user &&
+              (<>
+                <li>
+                  <a
+                    className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-gray-900 md:hover:text-blue-700 md:p-0 cursor-pointer"
+                    onClick={() => renderNewQuiz()}
+                  >
+                    New Quiz
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-gray-900 md:hover:text-blue-700 md:p-0 cursor-pointer"
+                    onClick={() => renderHistory()}
+                  >
+                    History
+                  </a>
+                </li>
+              </>)
+            }
           </ul>
         </div>
       </div>

@@ -1,17 +1,19 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { cleanQuestions, removeParticipant } from "@/store/Slices/participantSlice";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
+  const dispatch = useDispatch();
+
+  const sendToWaiting = () => {
+    dispatch(cleanQuestions());
+    dispatch(removeParticipant());
+    setRightComponent("RoomKey");
+  };
+
   return (
     <>
     <div className="w-full max-w-xs md:max-w-sm p-4 md:p-8">
-
-        <div className="flex items-center justify-center">
-          {/* <img
-            src="logo.png"
-            alt="Centered Image"
-            className="w-40 rounded-sm"
-          /> */}
-        </div>
         <h3 className="mb-8 flex justify-center text-lg font-medium text-gray-900 dark:text-white">
           Choose Your Role...
         </h3>
@@ -53,7 +55,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
             </li>
           </a>
           <br></br>
-          <a onClick={() => setRightComponent("RoomKey")}>
+          <a onClick={() => sendToWaiting()}>
             <li className="border-1">
               <input
                 type="radio"
