@@ -166,7 +166,7 @@ export default function Home() {
         <li></li>
         <li></li>
       </ul>
-
+  
       {/* Large Floating Card */}
       <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
         <div className="flex h-full">
@@ -200,18 +200,17 @@ export default function Home() {
               {renderLeftComponent()}
             </div>
           </div>
-
+  
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+          <div className="w-3/5 h-full flex flex-col">
             {/* Top Navbar */}
-
             <div className="w-full h-[10%] flex items-start justify-between p-4">
               <NavBar
                 setRightComponent={setRightComponent}
                 setLeftComponent={setLeftComponent}
               />
             </div>
-
+  
             {/* Content Area */}
             <div
               className="flex-grow flex items-center justify-center p-1"
@@ -225,12 +224,12 @@ export default function Home() {
           </div>
         </div>
       </div>
-
+  
       {/* Footer */}
       <footer className="w-full p-1 text-center">
         <p className="text-slate-50 font-small font-bold">
-          This is created by{" "}
-          <span className="font-extrabold text-yellow-100">Team Vertex</span> ❤️
+        © 2024{" "}
+          <span className="font-semibold text-yellow-100"> Team Vertex</span> All Rights Reserved.
         </p>
       </footer>
     </div>
