@@ -56,6 +56,8 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
   }, []);
 
   return (
+    <div className="max-w-sm bg-white relative p-4 w-full max-w-md max-h-full">
+      <div className="relative rounded-lg border-2 flex flex-col items-center pb-10 pt-4">
     <div className="max-w-6xl mx-auto p-6">
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
         Available Quizzes
@@ -72,9 +74,9 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
           <div className="w-full text-sm font-semibold">New Quiz</div>
         </div>
       </button>
-      <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+      <div className="relative overflow-x-auto  sm:rounded-lg">
+        <table className="w-full text-sm text-left text-slate-500 dark:text-gray-400">
+          <thead className="text-md text-gray-700 uppercase bg-slate-100 dark:bg-gray-700 dark:text-gray-400">
             <tr>
               <th scope="col" className="px-6 py-4">
                 #
@@ -121,6 +123,8 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
           </tbody>
         </table>
       </div>
+    </div>
+    </div>
     </div>
   );
 };
