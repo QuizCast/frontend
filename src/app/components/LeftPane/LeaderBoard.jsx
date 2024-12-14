@@ -25,7 +25,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
         (payload) => {
           if (payload.eventType === "INSERT") {
             console.log("New Participant Added");
-            if (payload.new.room_key !== room_key) return;
+            if (payload.new.room_key !== parseInt(room_key)) return;
             dispatch(
               insertLeaderboard({
                 id: payload.new.id,
@@ -34,7 +34,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
               })
             );
           } else if (payload.eventType === "UPDATE") {
-            if (payload.new.room_key !== room_key) return;
+            if (payload.new.room_key !== parseInt(room_key)) return;
             console.log("Participant Updated");
             dispatch(
               updateLeaderboard([
@@ -67,8 +67,13 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     }))
     .sort((a, b) => b.score - a.score);
 
+  const resetLeaderboard = () => {
+    dispatch(cleanLeaderboard());
+  };
+
   return (
     <div className="bg-glass-1 w-full p-4 rounded-lg shadow sm:p-6 md:p-8 dark:bg-gray-800 dark:border-gray-700">
+      <button type="button" className="bg-glass-1 p-3 text-sm text-slate-650 hover:text-slate-950" onClick={resetLeaderboard}>reset</button>
       <div className="w-full">
         <h2 className="font-bold text-lg text-slate-950 text-center">
           LEADER BOARD
