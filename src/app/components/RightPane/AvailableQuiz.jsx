@@ -60,9 +60,18 @@ const AvailableQuiz = ({ setRightComponent, setLeftComponent }) => {
       <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-6">
         Available Quizzes
       </h1>
-      <div>
+      {/* <div>
         <button type="button" onClick={newQuiz}>New Quiz</button>
-      </div>
+      </div> */}
+      <button
+        type="submit"
+        className="inline-flex items-center justify-between w-30 p-2 mb-6 text-black bg-white border border-green-200 rounded-md cursor-pointer hover:bg-green-100 hover:text-green-900 dark:bg-green-600 dark:text-white dark:hover:bg-green-500 dark:border-green-600"
+        onClick={newQuiz}
+      >
+        <div className="block">
+          <div className="w-full text-sm font-semibold">New Quiz</div>
+        </div>
+      </button>
       <div className="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead className="text-md text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
