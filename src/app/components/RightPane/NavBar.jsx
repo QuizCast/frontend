@@ -90,7 +90,7 @@ const NavBar = ({ setRightComponent, setLeftComponent }) => {
               (<>
                 <li>
                   <a
-                    className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-gray-900 md:hover:text-blue-700 md:p-0 cursor-pointer"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer"
                     onClick={() => renderNewQuiz()}
                   >
                     New Quiz
@@ -98,7 +98,7 @@ const NavBar = ({ setRightComponent, setLeftComponent }) => {
                 </li>
                 <li>
                   <a
-                    className="block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-gray-900 md:hover:text-blue-700 md:p-0 cursor-pointer"
+                    className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 cursor-pointer"
                     onClick={() => renderHistory()}
                   >
                     History
