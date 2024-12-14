@@ -25,6 +25,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
         (payload) => {
           if (payload.eventType === "INSERT") {
             console.log("New Participant Added");
+            if (payload.new.room_key !== room_key) return;
             dispatch(
               insertLeaderboard({
                 id: payload.new.id,
@@ -33,6 +34,7 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
               })
             );
           } else if (payload.eventType === "UPDATE") {
+            if (payload.new.room_key !== room_key) return;
             console.log("Participant Updated");
             dispatch(
               updateLeaderboard([
