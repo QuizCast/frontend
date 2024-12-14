@@ -17,6 +17,7 @@ import AboutUs from "./components/RightPane/AboutUs";
 import Profile from "./components/RightPane/Profile";
 import ErrorNotify from "./components/Notification/ErrorNotify";
 import SuccessNotify from "./components/Notification/SuccessNotify";
+import AvailableQuiz from "./components/RightPane/AvailableQuiz";
 
 export default function Home() {
   const [leftComponent, setLeftComponent] = useState("Welcome");
@@ -54,6 +55,13 @@ export default function Home() {
 
   const renderRightComponent = () => {
     switch (rightComponent) {
+      case "AvailableQuiz":
+        return (
+          <AvailableQuiz
+            setRightComponent={setRightComponent}
+            setLeftComponent={setLeftComponent}
+          />
+        );
       case "AboutUs":
         return (
           <AboutUs
