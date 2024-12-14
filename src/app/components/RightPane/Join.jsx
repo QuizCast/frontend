@@ -1,18 +1,21 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { cleanQuestions, removeParticipant } from "@/store/Slices/participantSlice";
 
 const Join = ({ setRightComponent, setLeftComponent }) => {
+  const dispatch = useDispatch();
+
+  const sendToWaiting = () => {
+    dispatch(cleanQuestions());
+    dispatch(removeParticipant());
+    setRightComponent("RoomKey");
+  };
+
   return (
     <>
-      <div className="w-full max-w-sm p-4   ">
-        <div className="flex items-center justify-center">
-          {/* <img
-            src="logo.png"
-            alt="Centered Image"
-            className="w-40 rounded-sm"
-          /> */}
-        </div>
-        <h3 className="mb-5 flex justify-center text-lg font-medium text-gray-900 dark:text-white">
-          Choose Your Role
+    <div className="w-full max-w-xs md:max-w-sm p-4 md:p-8">
+        <h3 className="mb-8 flex justify-center text-lg font-medium text-gray-900 dark:text-white">
+          Choose Your Role...
         </h3>
         <ul className="grid w-full gap-2 md:grid-cols-1">
           <a onClick={() => setRightComponent("Login")}>
@@ -27,11 +30,11 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
               />
               <label
                 htmlFor="hosting-small"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-300 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
               >
                 <div className="block">
                   <div className="w-full text-lg font-semibold">Host</div>
-                  <div className="w-full">For create a session.</div>
+                  <div className="w-full">Create a session.</div>
                 </div>
                 <svg
                   className="w-5 h-5 ms-3 rtl:rotate-180"
@@ -52,7 +55,7 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
             </li>
           </a>
           <br></br>
-          <a onClick={() => setRightComponent("RoomKey")}>
+          <a onClick={() => sendToWaiting()}>
             <li className="border-1">
               <input
                 type="radio"
@@ -63,13 +66,13 @@ const Join = ({ setRightComponent, setLeftComponent }) => {
               />
               <label
                 htmlFor="hosting-big"
-                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
+                className="inline-flex items-center justify-between w-full p-5 text-gray-500 bg-white border border-gray-300 rounded-lg cursor-pointer dark:border-gray-700 dark:hover:text-blue-500 hover:border-blue-600 hover:text-blue-600 dark:text-gray-400 dark:bg-gray-800"
               >
                 <div className="block">
                   <div className="w-full text-lg font-semibold">
                     Participant
                   </div>
-                  <div className="w-full">For join with a session.</div>
+                  <div className="w-full">Join with a session.</div>
                 </div>
                 <svg
                   className="w-5 h-5 ms-3 rtl:rotate-180"
