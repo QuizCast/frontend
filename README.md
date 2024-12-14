@@ -1,4 +1,4 @@
-![logo](https://github.com/user-attachments/assets/4d84857a-fa96-436c-a81c-0dd26a8a1aa7)
+<img src="https://github.com/user-attachments/assets/4d84857a-fa96-436c-a81c-0dd26a8a1aa7" alt="logo" width="200"/>
 
 # QuizCast Frontend
 
