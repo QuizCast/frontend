@@ -7,10 +7,9 @@ import { setParticipant, setQuestions } from "@/store/Slices/participantSlice";
 import { setRoom } from "@/store/Slices/roomSlice";
 import API_CONFIG from "../API";
 
-function RoomKey({ setRightComponent, setLeftComponent }) {
+function RoomKey({ setRightComponent, setLeftComponent, setMessage, setError }) {
   const [name, setName] = useState(""); // State to store the message
   const [quizKey, setQuizKey] = useState(""); // State to store the message
-  const [errorMessage, setErrorMessage] = useState(""); // State to store the error message
 
   const dispatch = useDispatch();
 
@@ -47,8 +46,8 @@ function RoomKey({ setRightComponent, setLeftComponent }) {
 
         setRightComponent("ReceiveMsg");
       } else {
-        setErrorMessage("Invalid credentials. Please try again.");
-        console.log("Error: ", response);
+        setMessage("Wrong Quiz room. Check the key and try again.");
+        setError(true);
       }
     } catch (error) {
       console.log("Error: ", error);
