@@ -1,5 +1,13 @@
 <img src="https://github.com/user-attachments/assets/4d84857a-fa96-436c-a81c-0dd26a8a1aa7" alt="logo" width="200"/>
 
+
+[![Made with Supabase](https://supabase.com/badge-made-with-supabase-dark.svg)](https://supabase.com)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+
+![Vercel Deploy](https://deploy-badge.vercel.app/vercel/quizcast-teamvertex)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 # QuizCast Frontend
 
 Welcome to the **QuizCast Frontend** repository! This frontend is built using **Next.js**, providing a sleek and intuitive interface for users to create, join, and participate in quizzes. It integrates with **Supabase** for real-time updates, authentication, and data broadcasting, making the quiz experience seamless and engaging. The UI is styled with **Tailwind CSS** and **Flowbite**, ensuring a modern and responsive design.
