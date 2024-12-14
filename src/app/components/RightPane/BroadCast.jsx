@@ -2,7 +2,8 @@
 
 import React, { useState } from "react";
 import useSupabase from "@/app/hooks/useSupabase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { cleanLeaderboard } from "@/store/Slices/leaderBoardSlice";
 import API_CONFIG from "../API";
 
 const BroadCast = ({ setRightComponent, setLeftComponent }) => {
@@ -12,6 +13,8 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
   const supabase = useSupabase();
   const room_key = useSelector((state) => state.room_key.room_key);
   const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
 
   const castMessage = (key) => {
     const channel = supabase.channel(key);
@@ -57,6 +60,7 @@ const BroadCast = ({ setRightComponent, setLeftComponent }) => {
       if (response.ok) {
         setRightComponent("Qsettings");
         setLeftComponent("Welcome"); // Hide LeaderBoard
+        dispatch(cleanLeaderboard());
       } else {
         setErrorMessage("Invalid credentials. Please try again.");
       }
