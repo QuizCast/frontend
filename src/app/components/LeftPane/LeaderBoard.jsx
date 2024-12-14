@@ -21,7 +21,11 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
       .channel(room_key)
       .on(
         "postgres_changes",
-        { event: "*", schema: "public", table: process.env.NEXT_PUBLIC_DB_TABLE },
+        {
+          event: "*",
+          schema: "public",
+          table: process.env.NEXT_PUBLIC_DB_TABLE,
+        },
         (payload) => {
           if (payload.eventType === "INSERT") {
             console.log("New Participant Added");
@@ -37,20 +41,13 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
             if (payload.new.room_key !== parseInt(room_key)) return;
             console.log("Participant Updated");
             dispatch(
-              updateLeaderboard([ 
-                {
-                  id: payload.new.id,
-                  name: payload.new.name,
-                  score: payload.new.score,
-                },
-              ])
+              updateLeaderboard([{
+                id: payload.new.id,
+                name: payload.new.name,
+                score: payload.new.score,
+              }])
             );
           }
-          // else if (payload.eventType === "DELETE") {
-          //   console.log("Participant Deleted");
-          //   dispatch(cleanLeaderboard());
-          //   setLeftComponent("Welcome");
-          // }
         }
       )
       .subscribe();
@@ -60,14 +57,19 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
     };
   }, [supabase, dispatch, setLeftComponent]);
 
-  // Map scoreBoard and store both the original score and scaled score for the graph
+  // Calculate the highest score for progress bar scaling
+  const highestScore = scoreBoard.reduce(
+    (max, participant) => Math.max(max, participant.score),
+    0
+  );
+
+  // Map and sort the scoreBoard for leaderboard display
   const sortedScoreBoard = scoreBoard
     .map((participant) => ({
       ...participant,
-      originalScore: participant.score, // Store the original score
-      scaledScore: Math.min(100, Math.max(0, participant.score)), // Clamp the score for graph rendering
+      progress: highestScore ? (participant.score / highestScore) * 100 : 0, // Scale progress relative to the highest score
     }))
-    .sort((a, b) => b.scaledScore - a.scaledScore); // Sort by scaled score for leaderboard
+    .sort((a, b) => b.score - a.score); // Sort by original score
 
   const resetLeaderboard = () => {
     dispatch(cleanLeaderboard());
@@ -79,9 +81,6 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
         <h2 className="font-bold text-lg text-slate-950 text-center">
           LEADER BOARD
         </h2>
-        {/* <div className="mt-4 grid flex justify-right sm:gap-4 text-center">
-          <span className="font-medium text-slate-500">Score</span>
-        </div> */}
         <div className="mt-4 space-y-6">
           {sortedScoreBoard.map((participant) => (
             <div
@@ -91,25 +90,25 @@ const LeaderBoard = ({ setRightComponent, setLeftComponent }) => {
               <div className="flex items-center min-w-[10rem] space-x-2">
                 <FaUserCircle className="w-8 h-8 text-gray-700 dark:text-white" />
                 <span className="text-sm font-medium text-gray-700 dark:text-white truncate">
-                  {participant.name}
+                  {participant.name} ({participant.score}) {/* Show original score */}
                 </span>
               </div>
               <div className="flex flex-1 items-center ml-auto space-x-2">
-                <span className="min-w-30 text-sm font-medium text-blue-700 dark:text-white">
-                  {participant.originalScore} {/* Display original score */}
-                </span>
-                <div className="w-full max-w-[8rem]  rounded-full h-2.5 dark:bg-gray-700">
+                <div className="w-full max-w-[8rem] rounded-full h-2.5 dark:bg-gray-700">
                   <div
                     className="bg-blue-600 h-2.5 rounded-full"
-                    style={{ width: `${participant.scaledScore}%` }} // Use the scaled score for the graph
+                    style={{ width: `${participant.progress}%` }} // Use progress for the graph
                   ></div>
                 </div>
+                <span className="min-w-30 text-xs font-medium text-gray-600 dark:text-gray-400">
+                  {participant.progress.toFixed(1)}% {/* Show progress as percentage */}
+                </span>
               </div>
             </div>
           ))}
         </div>
       </div>
-      <br/>
+      <br />
       <button
         type="button"
         className="bg-glass-1 w-full p-3 text-sm text-slate-650 hover:text-slate-950"
