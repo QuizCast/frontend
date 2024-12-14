@@ -169,15 +169,10 @@ export default function Home() {
   
       {/* Large Floating Card */}
       <div className="z-10 pd-1 w-11/12 md:w-4/5 lg:w-5/6 h-[90%] bg-white rounded-2xl shadow-2xl">
-        <div
-          className="flex flex-col lg:flex-row h-full"
-          style={{
-            maxHeight: "100%", // Prevent overflow
-          }}
-        >
+        <div className="flex h-full">
           {/* Left Half */}
           <div
-            className="w-full lg:w-2/5 h-full lg:h-auto flex items-center justify-center relative rounded-t-2xl lg:rounded-bl-2xl lg:rounded-tl-2xl"
+            className="w-2/5 h-full flex items-center justify-center relative rounded-bl-2xl rounded-tl-2xl"
             style={{
               backgroundSize: "cover",
               backgroundPosition: "center",
@@ -207,7 +202,7 @@ export default function Home() {
           </div>
   
           {/* Right Half */}
-          <div className="w-3/5 h-full flex flex-col bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')]">
+          <div className="w-3/5 h-full flex flex-col">
             {/* Top Navbar */}
             <div className="w-full h-[10%] flex items-start justify-between p-4">
               <NavBar

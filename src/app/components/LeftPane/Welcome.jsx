@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Welcome = ({ setRightComponent, setLeftComponent }) => {
     return (
@@ -25,9 +25,35 @@ const Welcome = ({ setRightComponent, setLeftComponent }) => {
                 </svg>
             </a>
             </div>
-        </div>
 
-    );
-}
+
+        {/* Action Button */}
+        <div className="flex justify-center">
+          <a
+            href="#"
+            className="inline-flex items-center py-2.5 px-5 text-base font-medium text-white bg-slate-900 rounded-lg hover:bg-slate-950 focus:ring-4 focus:ring-blue-300 "
+          >
+            Read more
+            <svg
+              className="w-3.5 h-3.5 ml-2 rtl:rotate-180"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 14 10"
+              aria-hidden="true"
+            >
+              <path
+                stroke="currentColor"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M1 5h12m0 0L9 1m4 4L9 9"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default Welcome;
