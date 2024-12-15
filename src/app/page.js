@@ -243,12 +243,50 @@ export default function Home() {
 
       {/* Footer */}
       <footer className="w-full p-1 text-center">
-        <p className="text-slate-50 font-small font-bold">
-          © 2024{" "}
-          <span className="font-semibold text-yellow-100"> Team Vertex</span>{" "}
-          All Rights Reserved.
-        </p>
-      </footer>
+  <p className="text-slate-50 font-small font-bold">
+    © 2024{" "}
+    <span className="font-semibold text-yellow-100">Team Vertex</span>{" "}
+    Open Source Contribution - 
+    <span className="font-semibold text-yellow-100">
+      <a
+        href="https://github.com/PinsaraPerera"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        @Pawan
+      </a>
+      ,{" "}
+      <a
+        href="https://github.com/Tharindu209"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        @Tharindu
+      </a>
+      ,{" "}
+      <a
+        href="https://github.com/SahanHeshan"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        @Sahan
+      </a>
+      ,{" "}
+      <a
+        href="https://github.com/GLRandula"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:underline"
+      >
+        @Lakith
+      </a>
+    </span>
+  </p>
+</footer>
+
     </div>
   );
 }
